@@ -1,0 +1,26 @@
+---
+import Title from "../shared/Title.astro";
+import Container from "../shared/Container.astro";
+import Card from "../cards/Card.astro";
+import { getCollection } from "astro:content";
+import { getI18n } from "../../i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({currentLocale});
+
+const projects = (await getCollection('projects'))
+  .filter((project) => project.data.language === currentLocale)
+  .sort((a, b) => a.data.priority - b.data.priority)
+  .slice(3);
+---
+
+<section id="other_projects" class="flex flex-col w-full justify-center items-center h-auto scroll-mt-[150px] sm:scroll-mt-0">
+  <Container className="space-y-8">
+    <div class="text-center max-w-3xl mx-auto">
+        <Title>{i18n.projects.others}</Title>
+    </div>
+    <div class="flex justify-center flex-wrap gap-4">
+        {projects.map((props) => <Card {...props.data} />)}
+    </div>
+</Container>
+</section>

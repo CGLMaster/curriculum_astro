@@ -1,0 +1,238 @@
+---
+// Definimos la interfaz de las props que recibimos
+interface Props {
+    title: string;
+    description: string;
+    img: string;
+    tags: string[];
+    repoUrl?: string;
+    demoUrl?: string;
+    anim?: string;
+}
+
+const { title, description, img, tags, repoUrl, demoUrl, anim } =
+    Astro.props as Props;
+
+import "iconify-icon";
+
+// Mapeo de tecnologías a iconos
+const iconsMapping = {
+    "React-Native": {
+        light: "skill-icons:react-light",
+        dark: "skill-icons:react-dark",
+        alt: "React-Native",
+    },
+    node: {
+        light: "skill-icons:nodejs-light",
+        dark: "skill-icons:nodejs-dark",
+        alt: "NodeJS",
+    },
+    aws: {
+        light: "skill-icons:aws-light",
+        dark: "skill-icons:aws-dark",
+        alt: "AWS",
+    },
+    js: {
+        light: "skill-icons:javascript",
+        dark: "skill-icons:javascript",
+        alt: "JavaScript",
+    },
+    docker: {
+        light: "skill-icons:docker",
+        dark: "skill-icons:docker",
+        alt: "Docker",
+    },
+    alexa: {
+        light: "cbi:alexa-logo",
+        dark: "cbi:alexa-logo",
+        alt: "Alexa",
+    },
+    electron: {
+        light: "skill-icons:electron",
+        dark: "skill-icons:electron",
+        alt: "Electron",
+    },
+    eclipse: {
+        light: "skill-icons:eclipse-light",
+        dark: "skill-icons:eclipse-dark",
+        alt: "Eclipse",
+    },
+    python: {
+        light: "skill-icons:python-light",
+        dark: "skill-icons:python-dark",
+        alt: "Python",
+    },
+    mongodb: {
+        light: "skill-icons:mongodb",
+        dark: "skill-icons:mongodb",
+        alt: "MongoDB",
+    },
+    mongoose: {
+        light: "devicon:mongoose",
+        dark: "devicon:mongoose",
+        alt: "Mongoose",
+    },
+    jira: {
+        light: "logos:jira",
+        dark: "logos:jira",
+        alt: "Jira",
+    },
+    java: {
+        light: "skill-icons:java-light",
+        dark: "skill-icons:java-dark",
+        alt: "Java",
+    },
+    IGDB: {
+        light: "simple-icons:igdb",
+        dark: "simple-icons:igdb",
+        alt: "IGDB API",
+    },
+    code: {
+        light: "skill-icons:vscode-light",
+        dark: "skill-icons:vscode-dark",
+        alt: "Visual Studio Code",
+    },
+    sass: {
+        light: "skill-icons:sass",
+        dark: "skill-icons:sass",
+        alt: "SASS",
+    },
+    html: {
+        light: "skill-icons:html",
+        dark: "skill-icons:html",
+        alt: "HTML",
+    },
+    gimp: {
+        light: "devicon:gimp",
+        dark: "devicon-plain:gimp",
+        alt: "GIMP",
+    },
+    express: {
+        light: "skill-icons:expressjs-light",
+        dark: "skill-icons:expressjs-dark",
+        alt: "ExpressJS",
+    },
+    css: {
+        light: "skill-icons:css",
+        dark: "skill-icons:css",
+        alt: "CSS",
+    },
+};
+
+// Mapeamos cada tag a un skill que contenga la información necesaria para mostrar el icono o la imagen
+const skills = tags.map((tag) => {
+    if (tag.toLowerCase() === "phaser") {
+        return { type: "image", src: "/logos/phaser.png", alt: "Phaser" };
+    }
+    return iconsMapping[tag] || { light: tag, dark: tag, alt: tag };
+});
+---
+
+<article
+    data-aos={anim ?? "fade-up"}
+    class="md:h-[40vh] flex flex-col md:flex-row bg-box-bg rounded-lg overflow-hidden shadow-xl transform transition duration-300 hover:scale-105"
+>
+    <!-- Sección de imagen -->
+    <div class="relative md:w-1/2 h-40 md:h-full">
+        <img
+            src={`/projects/${img}`}
+            alt={`Imagen de ${title}`}
+            class="object-cover w-full h-full"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black opacity-20"></div>
+    </div>
+
+    <!-- Sección de contenido -->
+    <div class="flex flex-col justify-between p-6 md:w-1/2">
+        <div>
+            <h3 class="text-3xl text-heading-1 font-bold mb-3">{title}</h3>
+            <div class="description">
+                <p class="text-heading-3">{description}</p>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+                {skills.map((skill, i) =>
+                    skill.type === "image" ? (
+                        <img
+                            key={i}
+                            src={skill.src}
+                            alt={skill.alt}
+                            class="w-7 h-7 md:w-10 md:h-10"
+                            title={skill.alt}
+                        />
+                    ) : (
+                        <>
+                            <iconify-icon
+                                key={`${i}-light`}
+                                icon={skill.light}
+                                class="block dark:hidden text-2xl md:text-4xl"
+                                title={skill.alt}
+                            />
+                            <iconify-icon
+                                key={`${i}-dark`}
+                                icon={skill.dark}
+                                class="hidden dark:block text-2xl md:text-4xl"
+                                title={skill.alt}
+                            />
+                        </>
+                    )
+                )}
+            </div>
+        </div>
+
+        <div class="mt-6 flex gap-4">
+            {repoUrl && (
+                <a
+                    href={repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block bg-[rgb(var(--heading-1))] hover:bg-[rgb(var(--heading-3))] text-[rgba(var(--color-bg))] px-4 py-2 rounded transition"
+                >
+                    <span class="flex items-center gap-2">
+                        <iconify-icon
+                            icon="mdi:github"
+                            class="text-2xl md:text-4xl"
+                            title="GitHub"
+                        />
+                        GitHub
+                    </span>
+                </a>
+            )}
+            {demoUrl && (
+                <a
+                    href={demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block bg-[rgb(var(--button))] hover:bg-[rgb(var(--button-hover))] text-heading-1 px-4 py-2 rounded transition"
+                >
+                    <span class="flex items-center gap-2">
+                        <iconify-icon
+                            icon="mdi:web"
+                            class="text-2xl md:text-4xl"
+                            title="Demo"
+                        />
+                        Demo
+                    </span>
+                </a>
+            )}
+        </div>
+    </div>
+</article>
+
+<style>
+    .description p {
+        overflow: auto;
+        white-space: wrap;
+        max-height: 120px;
+    }
+    .description p::-webkit-scrollbar {
+        width: 4px;
+        background: rgb(var(--heading-1-soft));
+        border-radius: 4px;
+    }
+    .description p::-webkit-scrollbar-thumb {
+        width: 2px;
+        background: rgb(var(--heading-1));
+        border-radius: 4px;
+    }
+</style>
+

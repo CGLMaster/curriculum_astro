@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Intro from './sections/Intro.astro';
+import AboutMe from './sections/AboutMe.astro';
+import TimeLine from './sections/TimeLine.astro';
+import CTA from './sections/CTA.astro';
+import Projects from './sections/Projects.astro';
+import OutstandingProjects from './sections/OutstandingProjects.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Curriculum Carlos">
+	<main class="flex flex-col gap-y-20 md:gap-y-32 overflow-hidden">
+		{/* */}
+		<Intro t={t} lang={lang}/>
+		<AboutMe t={t} lang={lang}/>
+		<TimeLine t={t} lang={lang}/>
+        <OutstandingProjects t={t} lang={lang}/>
+        <Projects t={t} lang={lang}/>
+		<CTA t={t} lang={lang}/>
+	</main>
+</Layout>

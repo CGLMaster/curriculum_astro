@@ -1,0 +1,46 @@
+---
+import Title from "../shared/Title.astro";
+import Container from "../shared/Container.astro";
+import ProjectCard from "../cards/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import { getI18n } from "../../i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18n({currentLocale});
+
+const featuredProjects = (await getCollection("projects"))
+  .filter((project) => project.data.language === currentLocale)
+  .sort((a, b) => a.data.priority - b.data.priority)
+  .slice(0, 3);
+
+---
+
+<section
+  id="projects"
+  class="flex flex-col w-full justify-center items-center h-auto min-h-[100dvh] scroll-mt-[150px] sm:scroll-mt-0 relative"
+>
+  <div
+    class="absolute right-0 bottom-0 h-full w-full flex items-end justify-end pointer-events-none z-0"
+  >
+    <div class="w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl">
+      <span
+        class="absolute w-16 h-16 -top-1 -right-1 bg-green-500 rounded-md rotate-45"
+      ></span>
+      <span
+        class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#FCDC58] rounded-md rotate-45"
+      ></span>
+      <span
+        class="absolute w-16 h-16 -bottom-1 -left-1 bg-primary rounded-md rotate-45"
+      ></span>
+    </div>
+  </div>
+
+  <Container className="space-y-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <Title>{i18n.projects.featured}</Title>
+    </div>
+    <div class="flex justify-center flex-wrap gap-4">
+      {featuredProjects.map((props) => <ProjectCard {...props.data} />)}
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,258 @@
+---
+const {
+    title,
+    description,
+    img,
+    tags = [],
+    repoUrl,
+    demoUrl,
+    inDevelopment = false,
+} = Astro.props;
+import "iconify-icon";
+
+const iconsMapping = {
+    "React-Native": {
+        light: "skill-icons:react-light",
+        dark: "skill-icons:react-dark",
+        alt: "React-Native",
+    },
+    node: {
+        light: "skill-icons:nodejs-light",
+        dark: "skill-icons:nodejs-dark",
+        alt: "NodeJS",
+    },
+    aws: {
+        light: "skill-icons:aws-light",
+        dark: "skill-icons:aws-dark",
+        alt: "AWS",
+    },
+    js: {
+        light: "skill-icons:javascript",
+        dark: "skill-icons:javascript",
+        alt: "JavaScript",
+    },
+    docker: {
+        light: "skill-icons:docker",
+        dark: "skill-icons:docker",
+        alt: "Docker",
+    },
+    alexa: { light: "cbi:alexa-logo", dark: "cbi:alexa-logo", alt: "Alexa" },
+    electron: {
+        light: "skill-icons:electron",
+        dark: "skill-icons:electron",
+        alt: "Electron",
+    },
+    eclipse: {
+        light: "skill-icons:eclipse-light",
+        dark: "skill-icons:eclipse-dark",
+        alt: "Eclipse",
+    },
+    python: {
+        light: "skill-icons:python-light",
+        dark: "skill-icons:python-dark",
+        alt: "Python",
+    },
+    mongodb: {
+        light: "skill-icons:mongodb",
+        dark: "skill-icons:mongodb",
+        alt: "MongoDB",
+    },
+    mongoose: {
+        light: "devicon:mongoose",
+        dark: "devicon:mongoose",
+        alt: "Mongoose",
+    },
+    jira: { light: "logos:jira", dark: "logos:jira", alt: "Jira" },
+    java: {
+        light: "skill-icons:java-light",
+        dark: "skill-icons:java-dark",
+        alt: "Java",
+    },
+    IGDB: {
+        light: "simple-icons:igdb",
+        dark: "simple-icons:igdb",
+        alt: "IGDB API",
+    },
+    code: {
+        light: "skill-icons:vscode-light",
+        dark: "skill-icons:vscode-dark",
+        alt: "Visual Studio Code",
+    },
+    sass: { light: "skill-icons:sass", dark: "skill-icons:sass", alt: "SASS" },
+    html: { light: "skill-icons:html", dark: "skill-icons:html", alt: "HTML" },
+    gimp: { light: "devicon:gimp", dark: "devicon-plain:gimp", alt: "GIMP" },
+    express: {
+        light: "skill-icons:expressjs-light",
+        dark: "skill-icons:expressjs-dark",
+        alt: "ExpressJS",
+    },
+    css: { light: "skill-icons:css", dark: "skill-icons:css", alt: "CSS" },
+};
+
+const skills = tags.map((tag) => {
+    if (tag.toLowerCase() === "phaser") {
+        return { type: "image", src: "/logos/phaser.png", alt: "Phaser" };
+    }
+    return iconsMapping[tag] || { light: tag, dark: tag, alt: tag };
+});
+console.log("hola", JSON.stringify(Astro.props, null, 2));
+---
+
+<div class="card__container relative w-[332px] h-[246px]">
+    {
+        inDevelopment && (
+            <div class="absolute top-0 right-0 z-10 transform translate-x-[30%] translate-y-[-30%] bg-red-600 text-white text-sm py-1 px-2 rounded-lg shadow-lg">
+                DEV
+            </div>
+        )
+    }
+
+    <div
+        class="card__portfolio w-[332px] h-[246px] overflow-hidden rounded-[22px] bg-box-bg relative shadow-md"
+    >
+        <img
+            src={`/projects/${img}`}
+            alt={title}
+            crossorigin="anonymous"
+            height={130}
+            width={332}
+            loading="lazy"
+            class="object-cover [object-position:center_0] h-[160px] w-[332px] bg-box-bg"
+        />
+
+        <div
+            class="descripcion__container absolute flex flex-col h-full w-full top-0 pt-[15px] bg-box-bg text-heading-1"
+        >
+            <h2
+                class="card__title absolute block w-max top-0 px-[22px] py-1 font-medium backdrop-blur-[10px] z-2 translate-y-[-100%] rounded-t-md"
+            >
+                {title}
+            </h2>
+            <div
+                class="descripcion px-[22px] flex w-full h-full flex-col gap-[10px]"
+            >
+                <p
+                    class="whitespace-nowrap overflow-hidden text-ellipsis h-[20px]"
+                >
+                    {description}
+                </p>
+
+                <div class="flex gap-[10px] text-[3rem]">
+                    {
+                        skills.map((skill) =>
+                            skill.type === "image" ? (
+                                <img
+                                    src={skill.src}
+                                    alt={skill.alt}
+                                    class="w-7 h-7"
+                                    title={skill.alt}
+                                />
+                            ) : (
+                                <>
+                                    <iconify-icon
+                                        icon={skill.light}
+                                        class="block dark:hidden text-2xl"
+                                        title={skill.alt}
+                                    />
+                                    <iconify-icon
+                                        icon={skill.dark}
+                                        class="hidden dark:block text-2xl"
+                                        title={skill.alt}
+                                    />
+                                </>
+                            ),
+                        )
+                    }
+                </div>
+
+                <div
+                    class="buttons p-[14px] w-full h-[47px] box-border flex justify-center gap-[22px]"
+                >
+                    {
+                        repoUrl && (
+                            <a
+                                class="relative"
+                                href={repoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span class="flex items-center gap-[4px]">
+                                    GitHub
+                                    <iconify-icon icon="quill:link-out" />
+                                </span>
+                            </a>
+                        )
+                    }
+                    {
+                        demoUrl && (
+                            <a
+                                class="relative"
+                                href={demoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span class="flex items-center gap-[4px]">
+                                    Demo
+                                    <iconify-icon icon="quill:link-out" />
+                                </span>
+                            </a>
+                        )
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card__portfolio .descripcion__container {
+        transition: 0.35s;
+        transform: translateY(63%);
+        transition-property: transform, padding-top;
+    }
+
+    .card__portfolio:hover .descripcion__container {
+        transform: translateY(0%);
+        padding-top: 55px;
+    }
+
+    .card__portfolio .descripcion__container .card__title {
+        background: rgba(var(--header-bg), 0.8);
+        transform: translateY(-100%);
+        transition-duration: 0.35s;
+        transition-property: background, transform;
+    }
+
+    .card__portfolio:hover .descripcion__container .card__title {
+        transform: translateY(11%);
+        backdrop-filter: none;
+        background: transparent;
+    }
+
+    .card__portfolio .descripcion p {
+        transition: 0.35s height;
+    }
+
+    .card__portfolio:hover .descripcion p {
+        overflow: auto;
+        white-space: wrap;
+        height: 90px;
+        max-height: 90px;
+    }
+
+    .card__portfolio .descripcion p::-webkit-scrollbar {
+        width: 4px;
+        background: rgb(var(--heading-1-soft));
+        border-radius: 4px;
+    }
+
+    .card__portfolio .descripcion p::-webkit-scrollbar-thumb {
+        width: 2px;
+        background: rgb(var(--heading-1));
+        border-radius: 4px;
+    }
+
+    .card__portfolio .buttons a:hover {
+        color: rgb(var(--heading-1-soft));
+    }
+</style>

@@ -1,0 +1,58 @@
+{
+    "nav": {
+        "title": "Portfolio Carlos",
+        "home": "Home",
+        "about": "About Me",
+        "trayectory": "My Trayerctory",
+        "skills": "Skills",
+        "projects": "Projects",
+        "curriculum": "Curriculum",
+        "theme": "Change Theme",
+        "tooglenav": "Toggle Navigation"
+    },
+    "intro": {
+        "title": {
+            "first": "Hello, my name is",
+            "second": "Carlos Gómez López",
+            "third": "and I'm a Software Engineer"
+        },
+        "description": "Specialized in web development, I love creating innovative solutions both in front-end and back-end. Always looking for new challenges that allow me to grow professionally.",
+        "download": "Download CV",
+        "byNumber": {
+            "age": "Age",
+            "experience": "Experience (Years)",
+            "personal": "Personal Projects",
+            "profesional": "Professional Projects",
+            "creativity": "Creative Ideas",
+            "learning": "Continuous Learning"
+        }
+    },
+    "about": {
+        "title": "About Me",
+        "paragraph": {
+            "first": "Hello, I'm Carlos Gómez López.",
+            "second": "I'm currently a graduate in Software Engineering from the ",
+            "link": "Complutense University of Madrid (UCM)",
+            "third": "I started to be interested in computer science since I was young and thanks to what the career has taught me, it has generated that I have more interest and desire to learn new knowledge and specialize in others. In my last years I have specialized in front, although simply as entertainment, since I do well both in front-end and back-end.",
+            "fourth": "In addition, throughout the career I have been able to learn knowledge regarding cybersecurity, graph analysis, use of efficient algorithms, integration of conversational agents, etc.",
+            "fifth": "In my free time I like to acquire new knowledge for my own benefit, go out with friends and do sports."
+        }
+    },
+    "trayectory":{
+        "title": "My Trayectory",
+        "actuality": "Actuality"
+    },
+    "projects": {
+        "featured": "Featured Projects",
+        "others": "Other Projects"
+    },
+    "cta": {
+        "title": {
+            "first": "Let's talk!",
+            "second": "Contact me",
+            "third": " and work together"
+        },
+        "paragraph": "If you have an idea, a project or just want to connect, I'll be happy to hear from you.",
+        "button": "Contact Me"
+    }
+}

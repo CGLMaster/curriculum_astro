@@ -1,0 +1,39 @@
+---
+import SkillSection from "./SkillSection.astro"
+const lenguages = [
+  { src: "/logos/c.png", darkSrc: "/logos/c.png", alt: "C" },
+  { src: "/logos/c++.png", darkSrc: "/logos/c++.png", alt: "C++" },
+  { src: "/logos/java.png", darkSrc: "/logos/java.png", alt: "Java" },
+  { src: "/logos/js.png", darkSrc: "/logos/js.png", alt: "JavaScript" },
+  { src: "/logos/python.png", darkSrc: "/logos/python.png", alt: "Python" },
+  { src: "/logos/bash.png", darkSrc: "/logos/bash.png", alt: "Bash" },
+  { src: "/logos/phaser.png", darkSrc: "/logos/phaser.png", alt: "Phaser" },
+  { src: "/logos/powershell.png", darkSrc: "/logos/powershell.png", alt: "PowerShell" },
+];
+const front = [
+  { src: "/logos/html.png", darkSrc: "/logos/html_dark.png", alt: "HTML" },
+  { src: "/logos/css.png", darkSrc: "/logos/css_dark.png", alt: "CSS" },
+  { src: "/logos/react.png", darkSrc: "/logos/react.png", alt: "React" },
+  { src: "/logos/react-native.png", darkSrc: "/logos/react-native.png", alt: "React Native" },
+  { src: "/logos/vue.png", darkSrc: "/logos/vue.png", alt: "Vue.js" },
+  { src: "/logos/tailwindcss.png", darkSrc: "/logos/tailwindcss.png", alt: "Tailwind CSS" },
+  { src: "/logos/bootstrap.png", darkSrc: "/logos/bootstrap.png", alt: "Bootstrap" },
+  { src: "/logos/sass.png", darkSrc: "/logos/sass.png", alt: "SASS" },
+  { src: "/logos/astro.png", darkSrc: "/logos/astro_dark.png", alt: "Astro" },
+];
+const back = [
+  { src: "/logos/nodejs.png", darkSrc: "/logos/nodejs.png", alt: "Node JS" },
+  { src: "/logos/mongodb.png", darkSrc: "/logos/mongodb.png", alt: "Mongo DB" },
+  { src: "/logos/expressjs.png", darkSrc: "/logos/expressjs_dark.png", alt: "Express JS" },
+  { src: "/logos/mongoose.png", darkSrc: "/logos/mongoose.png", alt: "Mongoose" },
+  { src: "/logos/mysql.png", darkSrc: "/logos/mysql.png", alt: "MySQL" },
+  { src: "/logos/postgresql.png", darkSrc: "/logos/postgresql.png", alt: "PostgreSQL" },
+  { src: "/logos/oracleSQL.png", darkSrc: "/logos/oracleSQL.png", alt: "Oracle SQL" }
+];
+---
+
+<section id="skills" class="flex flex-col gap-10 scroll-mt-[150px] sm:scroll-mt-0">
+    <SkillSection title="Lenguajes de programación" data={lenguages} animationDirection="left"/>
+    <SkillSection title="Front-end" data={front} animationDirection="right"/>
+    <SkillSection title="Back-end" data={back} animationDirection="left"/>
+</section>

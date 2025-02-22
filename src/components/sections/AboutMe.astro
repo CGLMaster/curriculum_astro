@@ -1,0 +1,97 @@
+---
+import Title from "../shared/Title.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import Container from "../shared/Container.astro";
+import { getI18n } from "../../i18n";
+const { currentLocale } = Astro;
+const i18n = getI18n({currentLocale});
+---
+
+<section id="about" class="flex items-center w-full scroll-mt-[100px] sm:scroll-mt-0">
+    <Container
+        className="relative space-y-8 flex flex-wrap lg:flex-nowrap justify-around gap-[4.4rem] py-5 md:py-[11rem] px-4 md:px-[13.1rem] w-full rounded-2xl bg-gradient-to-tr from-gray-100 to-gray-200 dark:from-gray-900"
+    >
+        <div class="absolute right-0 top-0 h-full w-full flex justify-end pointer-events-none z-0">
+            <div
+                class="w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl"
+            >
+                <span
+                    class="absolute w-16 h-16 -top-1 -right-1 bg-green-500 rounded-md rotate-45"
+                ></span>
+                <span
+                    class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#FCDC58] rounded-md rotate-45"
+                ></span>
+                <span
+                    class="absolute w-16 h-16 -bottom-1 -left-1 bg-primary rounded-md rotate-45"
+                ></span>
+            </div>
+        </div>
+
+        <div class="absolute left-0 bottom-0 h-full w-full flex items-end pointer-events-none z-0">
+            <div
+                class="w-28 h-28 overflow-auto flex rounded-xl relative blur-2xl"
+            >
+                <span
+                    class="absolute w-16 h-16 -top-1 -right-1 bg-green-500 rounded-md rotate-45"
+                ></span>
+                <span
+                    class="absolute w-16 h-16 -bottom-1 -right-1 bg-[#FCDC58] rounded-md rotate-45"
+                ></span>
+                <span
+                    class="absolute w-16 h-16 -bottom-1 -left-1 bg-primary rounded-md rotate-45"
+                ></span>
+            </div>
+        </div>
+        <img
+            class="bg-[#0d0045] object-cover rounded-full w-30 h-30 min-w-30 min-h-30 md:w-[39.5rem] md:h-[39.5rem] md:min-w-[39.5rem] md:min-h-[39.5rem] lg:w-[29.5rem] lg:h-[29.5rem] lg:min-w-[29.5rem] lg:min-h-[29.5rem] z-10"
+            src="/images/fotoCurriculum.jpeg"
+            alt="Foto de perfil de Jhon Doe"
+        />
+
+        <div class="flex flex-col justify-center gap-[2.1rem] max-w-[75rem] z-10">
+            <Title>{i18n.about.title}</Title>
+            <Paragraph>
+                {i18n.about.paragraph.first}
+                <br />
+                {i18n.about.paragraph.second}
+                <a href="https://www.ucm.es/" class="text-indigo-600 hover:underline font-medium" title="UCM"
+                    >{i18n.about.paragraph.link}</a
+                >.
+                <br />
+                {i18n.about.paragraph.third}
+                <br />
+                {i18n.about.paragraph.fourth}
+                <br />
+                {i18n.about.paragraph.fifth}
+            </Paragraph>
+            <div
+                class="flex w-full md:w-4/12 justify-around items-center mt-5 md:mt-0"
+            >
+                <a href="" class="hover:text-indigo-600" title="Curriculum">
+                    <iconify-icon icon="mdi:file-pdf" class="text-4xl" />
+                </a>
+                <a
+                    href="https://github.com/CGLMaster"
+                    class="hover:text-indigo-600"
+                    title="Github"
+                >
+                    <iconify-icon icon="mdi:github-box" class="text-4xl" />
+                </a>
+                <a
+                    href="mailto:carlos9gomezl@gmail.com"
+                    class="hover:text-indigo-600"
+                    title="Email"
+                >
+                    <iconify-icon icon="mdi:gmail" class="text-4xl" />
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/carlos-g%C3%B3mez-l%C3%B3pez-66536027a/"
+                    class="hover:text-indigo-600"
+                    title="Linkedin"
+                >
+                    <iconify-icon icon="mdi:linkedin" class="text-4xl" />
+                </a>
+            </div>
+        </div>
+    </Container>
+</section>

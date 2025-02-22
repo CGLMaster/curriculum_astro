@@ -1,0 +1,347 @@
+---
+import Container from "../shared/Container.astro";
+import Title from "../shared/Title.astro";
+
+const skills = [
+    {
+        src: "/logos/c.png",
+        darkSrc: "/logos/c.png",
+        alt: "C",
+        color: ["#659ad2", "#00599c", "#004482"],
+    },
+    {
+        src: "/logos/c++.png",
+        darkSrc: "/logos/c++.png",
+        alt: "C++",
+        color: ["#659ad2", "#00599c", "#004482"],
+    },
+    {
+        src: "/logos/java.png",
+        darkSrc: "/logos/java.png",
+        alt: "Java",
+        color: ["#eca767", "#5382a1"],
+    },
+    {
+        src: "/logos/js.png",
+        darkSrc: "/logos/js.png",
+        alt: "JavaScript",
+        color: ["#ffed8c", "#000001"],
+    },
+    {
+        src: "/logos/python.png",
+        darkSrc: "/logos/python.png",
+        alt: "Python",
+        color: ["#347ab4", "#ffca1d"],
+    },
+    {
+        src: "/logos/bash.png",
+        darkSrc: "/logos/bash.png",
+        alt: "Bash",
+        color: ["#434345", "#4da925"],
+    },
+    {
+        src: "/logos/phaser.png",
+        darkSrc: "/logos/phaser.png",
+        alt: "Phaser",
+        color: ["#9ddff9", "#7cc576"],
+    },
+    {
+        src: "/logos/powershell.png",
+        darkSrc: "/logos/powershell.png",
+        alt: "PowerShell",
+        color: ["#5290fc", "#3e6dbf"],
+    },
+    {
+        src: "/logos/html.png",
+        darkSrc: "/logos/html_dark.png",
+        alt: "HTML",
+        color: ["#e44d26", "#f16529"],
+    },
+    {
+        src: "/logos/css.png",
+        darkSrc: "/logos/css_dark.png",
+        alt: "CSS",
+        color: ["#264de4", "#2965f1"],
+    },
+    {
+        src: "/logos/react.png",
+        darkSrc: "/logos/react.png",
+        alt: "React",
+        color: ["#00d7fe"],
+    },
+    {
+        src: "/logos/react-native.png",
+        darkSrc: "/logos/react-native.png",
+        alt: "React Native",
+        color: ["#00d7fe"],
+    },
+    {
+        src: "/logos/vue.png",
+        darkSrc: "/logos/vue.png",
+        alt: "Vue.js",
+        color: ["#41b883", "#35495e"],
+    },
+    {
+        src: "/logos/tailwindcss.png",
+        darkSrc: "/logos/tailwindcss.png",
+        alt: "Tailwind CSS",
+        color: ["#38bdf8"],
+    },
+    {
+        src: "/logos/bootstrap.png",
+        darkSrc: "/logos/bootstrap.png",
+        alt: "Bootstrap",
+        color: ["#7c4dff"],
+    },
+    {
+        src: "/logos/sass.png",
+        darkSrc: "/logos/sass.png",
+        alt: "SASS",
+        color: ["#cd6799"],
+    },
+    {
+        src: "/logos/astro.png",
+        darkSrc: "/logos/astro_dark.png",
+        alt: "Astro",
+        color: ["#df376f", "#eb3ed6"],
+    },
+    {
+        src: "/logos/nodejs.png",
+        darkSrc: "/logos/nodejs.png",
+        alt: "Node JS",
+        color: ["#41873f", "#539e43"],
+    },
+    {
+        src: "/logos/mongodb.png",
+        darkSrc: "/logos/mongodb.png",
+        alt: "Mongo DB",
+        color: ["#13aa52"],
+    },
+    {
+        src: "/logos/expressjs.png",
+        darkSrc: "/logos/expressjs_dark.png",
+        alt: "Express JS",
+        color: ["#ffffff"],
+    },
+    {
+        src: "/logos/mongoose.png",
+        darkSrc: "/logos/mongoose.png",
+        alt: "Mongoose",
+        color: ["#b71c1c"],
+    },
+    {
+        src: "/logos/mysql.png",
+        darkSrc: "/logos/mysql.png",
+        alt: "MySQL",
+        color: ["#01759a", "#e38e24"],
+    },
+    {
+        src: "/logos/postgresql.png",
+        darkSrc: "/logos/postgresql.png",
+        alt: "PostgreSQL",
+        color: ["#336791"],
+    },
+    {
+        src: "/logos/oracleSQL.png",
+        darkSrc: "/logos/oracleSQL.png",
+        alt: "Oracle SQL",
+        color: ["#ee0004"],
+    },
+];
+
+/**
+ * 0 = vacío
+ * 1 = borde (blanco)
+ * 2 = interior (skills)
+ *
+ */
+const moonPattern = [
+    [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0],
+    [0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+    [0, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 0],
+    [1, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 1, 1, 2],
+    [1, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 2],
+    [1, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 2, 1, 2, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 1, 2, 1, 2, 1, 2, 1, 0, 0, 0, 0, 1, 2, 1],
+    [0, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+];
+---
+
+<style>
+    .toggle-cell.active .toggle-default {
+        opacity: 0 !important;
+    }
+    .toggle-cell.active .toggle-active {
+        opacity: 1 !important;
+    }
+    .card {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-areas: "card";
+        place-items: center;
+        aspect-ratio: 4/5;
+        border: 1px solid var(--surface-2, #27272a);
+        isolation: isolate;
+        transition: border-color 200ms cubic-bezier(0.5, 1, 0.89, 1);
+        user-select: none;
+        border-radius: 10px;
+    }
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at bottom left,
+            transparent 55%,
+            var(--surface-1, #101012)
+        );
+        pointer-events: none;
+        box-shadow: var(--bg, #09090b) -0.5rem 0.5rem 2.5rem inset;
+        transition: opacity 900ms cubic-bezier(0.5, 1, 0.89, 1);
+    }
+    .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        aspect-ratio: 1;
+        background: radial-gradient(
+            circle,
+            var(--bg, #09090b),
+            transparent 65%
+        );
+        opacity: 0;
+        transition: opacity 800ms cubic-bezier(0.5, 1, 0.89, 1);
+    }
+    .card > * {
+        grid-area: card;
+    }
+    .card svg {
+        position: relative;
+        z-index: 1;
+        width: 30%;
+        height: auto;
+        color: var(--surface-3, #52525b);
+        transition: 300ms cubic-bezier(0.5, 1, 0.89, 1);
+    }
+    .card button {
+        opacity: 0;
+    }
+    .card:where(:hover, :focus-within) {
+        border-color: var(--active-color, #e3e3e3);
+        transition: border-color 800ms cubic-bezier(0.45, 0, 0.55, 1);
+    }
+    .card:where(:hover, :focus-within) svg {
+        color: var(--active-color, #e3e3e3);
+        transform: scale(1.1);
+        transition: 300ms cubic-bezier(0.45, 0, 0.55, 1);
+    }
+    .card:where(:hover, :focus-within)::before {
+        opacity: 0;
+    }
+    .card:where(:hover, :focus-within)::after {
+        opacity: 1;
+    }
+</style>
+
+<Container className="space-y-8 flex flex-row items-center">
+    <section
+      id="skills"
+      class="grid gap-0 w-max"
+      style={{ gridTemplateColumns: "repeat(15, minmax(0, 1fr))" }}
+    >
+      {moonPattern.map((row, rowIndex) =>
+        row.map((cell, colIndex) => {
+          if (cell === 1) {
+            return (
+              <div key={`${rowIndex}-${colIndex}`} class="w-14 h-14 relative">
+                <pixel-canvas
+                  data-speed="40"
+                  class="absolute inset-0 pointer-events-none"
+                />
+              </div>
+            );
+          } else if (cell === 2) {
+            const skill = skills[(rowIndex * 15 + colIndex) % skills.length];
+            return (
+              <div
+                key={`${rowIndex}-${colIndex}`}
+                class="w-14 h-14 relative flex items-center justify-center toggle-cell"
+              >
+                <pixel-canvas
+                  data-speed="40"
+                  data-colors="#e0f2fe, #7dd3fc, #0ea5e9"
+                  class="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-100 toggle-default"
+                />
+                <pixel-canvas
+                  data-speed="40"
+                  data-colors={skill.color.join(", ")}
+                  class="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0 toggle-active"
+                />
+                <img
+                  src={skill.darkSrc}
+                  alt={skill.alt}
+                  class="w-11 h-11 object-contain relative z-10 pointer-events-none transition-all duration-300 ease-in-out opacity-0 toggle-active"
+                />
+              </div>
+            );
+          } else {
+            return (
+              <div key={`${rowIndex}-${colIndex}`} class="w-14 h-14" />
+            );
+          }
+        })
+      )}
+    </section>
+  
+    <div class="text-center max-w-3xl mx-auto mt-8">
+      <Title>Habilidades</Title>
+      <div class="card w-64 mx-auto mt-4" style="--active-color: #fef08a">
+        <pixel-canvas-original
+          data-gap="3"
+          data-speed="20"
+          data-colors="#fef08a, #fde047, #eab308"
+        ></pixel-canvas-original>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          fill="currentcolor"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M180,146H158V110h22a34,34,0,1,0-34-34V98H110V76a34,34,0,1,0-34,34H98v36H76a34,34,0,1,0,34,34V158h36v22a34,34,0,1,0,34-34ZM158,76a22,22,0,1,1,22,22H158ZM54,76a22,22,0,0,1,44,0V98H76A22,22,0,0,1,54,76ZM98,180a22,22,0,1,1-22-22H98Zm12-70h36v36H110Zm70,92a22,22,0,0,1-22-22V158h22a22,22,0,0,1,0,44Z"
+          ></path>
+        </svg>
+        <button>Command</button>
+      </div>
+    </div>
+  </Container>
+  
+
+<script type="module">
+    document.addEventListener("astro:page-load", () => {
+        const cells = document.querySelectorAll(".toggle-cell");
+        cells.forEach((cell) => {
+            cell.addEventListener("click", () => {
+                const isActive = cell.classList.contains("active");
+                cells.forEach((c) => c.classList.remove("active"));
+                if (!isActive) {
+                    cell.classList.add("active");
+                }
+            });
+        });
+        if (cells.length > 0) {
+            const randomIndex = Math.floor(Math.random() * cells.length);
+            cells[randomIndex].classList.add("active");
+        }
+    });
+</script>

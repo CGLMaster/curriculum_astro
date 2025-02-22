@@ -1,0 +1,81 @@
+---
+import Button from "../shared/Button.astro";
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import ByNumber from "./ByNumber.astro";
+import { getI18n } from "../../i18n";
+const { currentLocale } = Astro;
+const i18n = getI18n({currentLocale});
+---
+
+<section class="relative pt-32 lg:pt-36">
+  <Container className="flex flex-col lg:flex-row gap-10 lg:gap-12">
+    <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0">
+      <span
+        class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary blur-xl opacity-80"
+      ></span>
+    </div>
+    <span
+      class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"
+    ></span>
+
+    <div
+      class="relative flex flex-col items-center text-center lg:py-7 xl:py-8 lg:items-start max-w-3xl mx-auto"
+    >
+      <h1
+        class="text-xl/tight sm:text-2xl/tight md:text-3xl/tight xl:text-4xl/tight font-bold text-heading-1 w-[100%]"
+      >
+        {i18n.intro.title.first}<br />
+        <span
+          class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary via-30% to-green-600"
+        >
+          {i18n.intro.title.second}
+        </span>
+        <br />
+        {i18n.intro.title.third}
+      </h1>
+      <Paragraph className="mt-8">
+        {i18n.intro.description}
+      </Paragraph>
+      <div
+        class="mt-10 w-full flex flex-col md:flex-row mx-auto lg:mx-0 md:justify-center items-center"
+      >
+        <Button variant="primary" className="min-w-max text-white">
+          <span
+            class="flex flex-row relative z-[5] justify-center items-center"
+          >
+            <iconify-icon icon="mdi:file-pdf" class="text-2xl"
+            ></iconify-icon>&nbsp;&nbsp;{i18n.intro.download}
+          </span>
+        </Button>
+        <div
+          class="flex flex-1 md:flex-none w-3/5 md:w-4/12 justify-around items-center mt-5 md:mt-0 ms-0 md:ms-8"
+        >
+          <a
+            href="https://github.com/CGLMaster"
+            class="hover:text-indigo-600"
+            title="Github"
+          >
+            <iconify-icon icon="mdi:github-box" class="text-4xl"></iconify-icon>
+          </a>
+          <a
+            href="mailto:carlos9gomezl@gmail.com"
+            class="hover:text-indigo-600"
+            title="Email"
+          >
+            <iconify-icon icon="mdi:gmail" class="text-4xl"></iconify-icon>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/carlos-g%C3%B3mez-l%C3%B3pez-66536027a/"
+            class="hover:text-indigo-600"
+            title="Linkedin"
+          >
+            <iconify-icon icon="mdi:linkedin" class="text-4xl"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  <ByNumber />
+</section>

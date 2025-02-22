@@ -1,0 +1,125 @@
+---
+import Container from "../shared/Container.astro";
+import Title from "../shared/Title.astro";
+
+export interface Props {
+    title: string;
+    data: Array<{ src: string; darkSrc?: string; alt: string }>;
+    animationDirection?: "left" | "right";
+}
+
+const { title, data, animationDirection } = Astro.props;
+---
+
+<section>
+    <Container className="space-y-8">
+        <div class="text-center max-w-3xl mx-auto">
+            <Title>
+                {title}
+            </Title>
+        </div>
+        <div class="logos fade-mask">
+            <div class="logos-slider-container">
+                <div class={`logos-slider ${animationDirection === 'left' ? 'animate-left-to-right' : 'animate-right-to-left'}`}>
+                    {
+                        data.map((item, index) => (
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                class="block dark:hidden h-12 mx-5 sm:h-20 sm:mx-8"
+                                title={item.alt}
+                            />
+                            <img
+                                src={item.darkSrc}item.
+                                alt={item.alt}
+                                class="hidden dark:block h-12 mx-5 sm:h-20 sm:mx-8"
+                                title={item.alt}
+                            />
+                        ))
+                    }
+                    {
+                        data.map((item, index) => (
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                class="block dark:hidden h-12 mx-5 sm:h-20 sm:mx-8"
+                                title={item.alt}
+                            />
+                            <img
+                                src={item.darkSrc}item.
+                                alt={item.alt}
+                                class="hidden dark:block h-12 mx-5 sm:h-20 sm:mx-8"
+                                title={item.alt}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </Container>
+</section>
+
+<style>
+    @keyframes slide-left-to-right {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes slide-right-to-left {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    .logos {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .logos-slider-container {
+        width: 100%;
+        display: flex;
+    }
+
+    .logos-slider {
+        display: flex;
+        animation: 35s linear infinite;
+    }
+
+    .logos:hover .logos-slider {
+        animation-play-state: paused;
+    }
+
+    .animate-left-to-right {
+        animation: slide-left-to-right 35s linear infinite;
+    }
+
+    .animate-right-to-left {
+        animation: slide-right-to-left 35s linear infinite;
+    }
+
+    .fade-mask {
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+    }
+</style>
+

@@ -1,0 +1,24 @@
+---
+export interface Props {
+  src: string;
+  darkSrc?: string;
+  alt: string;
+}
+
+const { src, darkSrc, alt } = Astro.props;
+---
+
+<div class="p-4 sm:p-5 rounded-xl bg-body border border-box-border group">
+  <img
+    src={src}
+    alt={alt}
+    class="block dark:hidden h-7 sm:h-10 w-auto ease-linear duration-300 grayscale group-hover:!grayscale-0 group-hover:scale-105"
+    title={alt}
+  />
+  <img
+    src={darkSrc}
+    alt={alt}
+    class="hidden dark:block h-7 sm:h-10 w-auto ease-linear duration-300 grayscale group-hover:!grayscale-0 group-hover:scale-105"
+    title={alt}
+  />
+</div>

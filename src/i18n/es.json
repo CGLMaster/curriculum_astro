@@ -1,0 +1,58 @@
+{
+    "nav": {
+        "title": "Portafolio Carlos",
+        "home": "Inicio",
+        "about": "Sobre Mi",
+        "trayectory": "Mi Trayectoria",
+        "skills": "Habilidades",
+        "projects": "Proyectos",
+        "curriculum": "Currículum",
+        "theme": "Cambiar Tema",
+        "tooglenav": "Alternar Navegación"
+    },
+    "intro": {
+        "title": {
+            "first": "Hola, mi nombre es",
+            "second": "Carlos Gómez López",
+            "third": "y soy Ingeniero de Software"
+        },
+        "description": "Especializado en desarrollo web, me encanta crear soluciones innovadoras tanto en front-end como en back-end. Siempre en busca de nuevos desafíos que me permitan crecer profesionalmente.",
+        "download": "Descargar CV",
+        "byNumber": {
+            "age": "Edad",
+            "experience": "Experiencia (Años)",
+            "personal": "Proyectos Personales",
+            "profesional": "Proyectos Profesionales",
+            "creativity": "Ideas creativas",
+            "learning": "Aprendizaje continuo"
+        }
+    },
+    "about": {
+        "title": "Sobre mí",
+        "paragraph": {
+            "first": "Buenas, soy Carlos Gómez López.",
+            "second": "Actualmente soy graduado en Ingeniería de Software por la ",
+            "link": "Universidad Complutense de Madrid (UCM)",
+            "third": "Empecé a interesarme en la informática desde joven y gracias a lo que me ha enseñado la carrera ha generado que tenga más interés y ganas de aprender nuevos conocimientos y especializarme en otros. En mis últimos años me he especializado en front, aunque simplemente como entretenimiento, ya que me desenvuelvo bien tanto en front-end como en back-end.",
+            "fourth": "Además, a lo largo de la carrera he podido aprender conocimientos con respecto a la ciberseguridad, análisis de grafos, empleo de algoritmos eficientes, integración de agentes conversacionales, etc.",
+            "fifth": "En mi tiempo libre me gusta adquirir conocimientos nuevos para beneficio propio, salir con los amigos y realizar deporte."
+        }
+    },
+    "trayectory":{
+        "title": "Mi Trayectoria",
+        "actuality": "Actualidad"
+    },
+    "projects": {
+        "featured": "Proyectos Destacados",
+        "others": "Otros Proyectos"
+    },
+    "cta":{
+        "title": {
+            "first": "¡Hablemos!",
+            "second": "Contáctame",
+            "third": " y trabajemos juntos"
+        },
+        "paragraph": "Si tienes una idea, un proyecto o simplemente quieres conectar, estaré encantado de escucharte.",
+        "button": "Contáctame"
+    }
+}
