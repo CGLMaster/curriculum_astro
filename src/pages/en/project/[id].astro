@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import App from "../../../components/sections/Project.astro";
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+
+    return projects.map((project) => {
+        const id = project.slug.replace(/^(es|en)\//, "");
+
+        return {
+            params: { id },
+            props: { project }, 
+        };
+    });
+}
+
+const { project } = Astro.props;
+---
+
+<ProjectLayout title="Portfolio Carlos">
+  <App project={project} />
+</ProjectLayout>

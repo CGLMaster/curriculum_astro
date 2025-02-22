@@ -1,6 +1,6 @@
 ---
-// Definimos la interfaz de las props que recibimos
 interface Props {
+    slug: string;
     title: string;
     description: string;
     img: string;
@@ -10,12 +10,11 @@ interface Props {
     anim?: string;
 }
 
-const { title, description, img, tags, repoUrl, demoUrl, anim } =
+const { slug, title, description, img, tags, repoUrl, demoUrl, anim } =
     Astro.props as Props;
 
 import "iconify-icon";
 
-// Mapeo de tecnologías a iconos
 const iconsMapping = {
     "React-Native": {
         light: "skill-icons:react-light",
@@ -119,33 +118,40 @@ const iconsMapping = {
     },
 };
 
-// Mapeamos cada tag a un skill que contenga la información necesaria para mostrar el icono o la imagen
 const skills = tags.map((tag) => {
     if (tag.toLowerCase() === "phaser") {
         return { type: "image", src: "/logos/phaser.png", alt: "Phaser" };
     }
     return iconsMapping[tag] || { light: tag, dark: tag, alt: tag };
 });
+
+const { currentLocale } = Astro;
+console.log("currentLocale", currentLocale);
+
+const href = currentLocale === "en" ? `/en/project/${slug.replace(/^(es|en)\//, "")}` : `/project/${slug.replace(/^(es|en)\//, "")}`;
+console.log("href", href);
 ---
 
 <article
     data-aos={anim ?? "fade-up"}
     class="md:h-[40vh] flex flex-col md:flex-row bg-box-bg rounded-lg overflow-hidden shadow-xl transform transition duration-300 hover:scale-105"
 >
-    <!-- Sección de imagen -->
-    <div class="relative md:w-1/2 h-40 md:h-full">
+    <a href={href} class="relative md:w-1/2 h-40 md:h-full block">
         <img
             src={`/projects/${img}`}
             alt={`Imagen de ${title}`}
             class="object-cover w-full h-full"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black opacity-20"></div>
-    </div>
+    </a>
 
-    <!-- Sección de contenido -->
     <div class="flex flex-col justify-between p-6 md:w-1/2">
         <div>
-            <h3 class="text-3xl text-heading-1 font-bold mb-3">{title}</h3>
+            <a href={href} class="block">
+                <h3 class="text-3xl text-heading-1 font-bold mb-3 hover:underline">
+                    {title}
+                </h3>
+            </a>
             <div class="description">
                 <p class="text-heading-3">{description}</p>
             </div>
@@ -217,6 +223,7 @@ const skills = tags.map((tag) => {
         </div>
     </div>
 </article>
+
 
 <style>
     .description p {
