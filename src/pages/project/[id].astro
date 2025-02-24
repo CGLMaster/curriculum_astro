@@ -4,16 +4,17 @@ import App from "../../components/sections/Project.astro";
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
 
 export async function getStaticPaths() {
-    const projects = await getCollection("projects");
-
-    return projects.map((project) => {
-        const id = project.slug.replace(/^(es|en)\//, "");
-
-        return {
-            params: { id },
-            props: { project }, 
-        };
-    });
+  const projects = await getCollection("projects");
+  const spanishProjects = projects.filter(project =>
+    project.slug.startsWith("es/")
+  );
+  return spanishProjects.map(project => {
+    const id = project.slug.replace(/^(es|en)\//, "");
+    return {
+      params: { id },
+      props: { project },
+    };
+  });
 }
 
 const { project } = Astro.props;

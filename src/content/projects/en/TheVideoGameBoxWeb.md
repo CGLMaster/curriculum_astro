@@ -50,4 +50,4 @@ In the project's demonstration, you can see the game search process, the user in
 
 ## Owner
 
-- **Carlos Gómez López**
+- **Carlos** Gómez López

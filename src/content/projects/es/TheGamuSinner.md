@@ -9,13 +9,7 @@ anim: 'fade-up'
 priority: 2
 language: 'es'
 ---
-
-<h1 align="center">
-  <br>
-  <img src="./public/projects/thegamussiner_title.png" height="150">
-</h1>
-
-# The GamuSinner
+## ⓘ Sobre el proyecto
 
 **Proyecto desarrollado en la asignatura Diseño de Videojuegos e Interfaces (DVI) en la Universidad Complutense de Madrid (UCM).**  
 

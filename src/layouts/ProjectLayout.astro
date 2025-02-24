@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -33,89 +33,19 @@ const lang = getLangFromUrl(Astro.url);
     />
   </head>
   <body class="bg-body">
+    <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0 hidden md:block">
+      <span
+        class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary blur-xl opacity-80"
+      ></span>
+    </div>
+    <span
+      class="hidden md:block w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"
+    ></span>
     <slot />
-    <ViewTransitions />
+    <ClientRouter />
   </body>
   <script type="module" src="/pixel-canvas.js"></script>
   <script type="module" src="/pixel-canvas-original.js"></script>
-  <script>
-    document.addEventListener("astro:page-load", () => {
-      const switchTheme = document.querySelector("[data-switch-theme]");
-      const doc = document.documentElement;
-
-      if (
-        localStorage.getItem("appTheme") === "dark" ||
-        (!("appTheme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        doc.classList.add("dark");
-      } else {
-        doc.classList.remove("dark");
-      }
-
-      if (switchTheme) {
-        switchTheme.addEventListener("click", (e) => {
-          e.preventDefault();
-          if (doc.classList.contains("dark")) {
-            doc.classList.remove("dark");
-            localStorage.setItem("appTheme", "light");
-          } else {
-            doc.classList.add("dark");
-            localStorage.setItem("appTheme", "dark");
-          }
-        });
-      }
-    });
-  </script>
-  <script>
-    document.addEventListener("astro:page-load", () => {
-      let scrollTimeout;
-      window.addEventListener("scroll", () => {
-        document.body.classList.add("scrolling");
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          document.body.classList.remove("scrolling");
-        }, 500);
-      });
-      const toggleMenu = document.querySelector(
-        "[data-toggle-nav]",
-      ) as HTMLButtonElement;
-      const navbar = document.querySelector("[data-navbar]") as HTMLDivElement;
-      const overlayNav = document.querySelector(
-        "[data-nav-overlay]",
-      ) as HTMLDivElement;
-      if (toggleMenu) {
-        toggleMenu.addEventListener("click", (e) => {
-          e.preventDefault();
-          if (toggleMenu.getAttribute("data-open-nav") === "false") {
-            toggleMenu.setAttribute("data-open-nav", "true");
-            overlayNav.setAttribute("data-is-visible", "true");
-            document.body.classList.add("!overflow-y-hidden");
-            navbar.style.height = `${navbar.scrollHeight}px`;
-          } else {
-            toggleMenu.setAttribute("data-open-nav", "false");
-            overlayNav.setAttribute("data-is-visible", "false");
-            document.body.classList.remove("!overflow-y-hidden");
-            navbar.style.height = "0px";
-          }
-        });
-
-        navbar.addEventListener("click", () => {
-          toggleMenu.setAttribute("data-open-nav", "false");
-          overlayNav.setAttribute("data-is-visible", "false");
-          document.body.classList.remove("!overflow-y-hidden");
-          navbar.style.height = "0px";
-        });
-
-        overlayNav.addEventListener("click", () => {
-          toggleMenu.setAttribute("data-open-nav", "false");
-          overlayNav.setAttribute("data-is-visible", "false");
-          document.body.classList.remove("!overflow-y-hidden");
-          navbar.style.height = "0px";
-        });
-      }
-    });
-</script>
 </html>
 <style is:global>
   :root {

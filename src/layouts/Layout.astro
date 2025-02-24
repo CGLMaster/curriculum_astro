@@ -1,6 +1,6 @@
 ---
 import Navbar from "../components/elements/Navbar.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -36,7 +36,7 @@ const lang = getLangFromUrl(Astro.url);
   <body class="bg-body">
     <Navbar />
     <slot />
-    <ViewTransitions />
+    <ClientRouter />
   </body>
   <script type="module" src="/pixel-canvas.js"></script>
   <script type="module" src="/pixel-canvas-original.js"></script>

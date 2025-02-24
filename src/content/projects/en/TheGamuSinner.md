@@ -10,12 +10,7 @@ priority: 2
 language: 'en'
 ---
 
-<h1 align="center">
-  <br>
-  <img src="./public/projects/thegamussiner_title.png" height="150">
-</h1>
-
-# The GamuSinner
+## ⓘ About the project
 
 **Project developed for the Video Game and Interfaces Design (DVI) course at the Complutense University of Madrid (UCM).**
 

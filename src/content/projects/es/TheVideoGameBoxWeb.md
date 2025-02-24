@@ -50,5 +50,5 @@ En la demostración del proyecto, se puede ver el proceso de búsqueda de juegos
 
 ## Propietario
 
-- **Carlos Gómez López**
+- **Carlos** Gómez López
 
