@@ -1,22 +1,12 @@
 ---
-import BtnLink from "../shared/BtnLink.astro";
 import Container from "../shared/Container.astro";
 import Navitem from "../shared/Navitem.astro";
 import Button from "../shared/Button.astro";
 import LanguageSelector from "./LanguageSelector.astro";
 import { getI18n } from "../../i18n";
-import {
-    getLangFromUrl,
-    useTranslations,
-    useTranslatedPath,
-} from "../../i18n/utils";
 
 const { currentLocale } = Astro;
 const i18n = getI18n({ currentLocale });
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
 
 const navItems = [
     {

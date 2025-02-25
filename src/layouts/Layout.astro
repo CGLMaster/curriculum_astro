@@ -5,7 +5,7 @@ import { ClientRouter } from "astro:transitions";
 export interface Props {
   title: string;
 }
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -38,36 +38,37 @@ const lang = getLangFromUrl(Astro.url);
     <slot />
     <ClientRouter />
   </body>
-  <script type="module" src="/pixel-canvas.js"></script>
-  <script type="module" src="/pixel-canvas-original.js"></script>
   <script>
-    document.addEventListener("astro:page-load", () => {
-      const switchTheme = document.querySelector("[data-switch-theme]");
-      const doc = document.documentElement;
+    if (!window.__astroPageLoadAdded) {
+      window.__astroPageLoadAdded = true;
+      document.addEventListener("astro:page-load", () => {
+        const switchTheme = document.querySelector("[data-switch-theme]");
+        const doc = document.documentElement;
 
-      if (
-        localStorage.getItem("appTheme") === "dark" ||
-        (!("appTheme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        doc.classList.add("dark");
-      } else {
-        doc.classList.remove("dark");
-      }
+        if (
+          localStorage.getItem("appTheme") === "dark" ||
+          (!("appTheme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          doc.classList.add("dark");
+        } else {
+          doc.classList.remove("dark");
+        }
 
-      if (switchTheme) {
-        switchTheme.addEventListener("click", (e) => {
-          e.preventDefault();
-          if (doc.classList.contains("dark")) {
-            doc.classList.remove("dark");
-            localStorage.setItem("appTheme", "light");
-          } else {
-            doc.classList.add("dark");
-            localStorage.setItem("appTheme", "dark");
-          }
-        });
-      }
-    });
+        if (switchTheme) {
+          switchTheme.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (doc.classList.contains("dark")) {
+              doc.classList.remove("dark");
+              localStorage.setItem("appTheme", "light");
+            } else {
+              doc.classList.add("dark");
+              localStorage.setItem("appTheme", "dark");
+            }
+          });
+        }
+      });
+    }
   </script>
   <script>
     document.addEventListener("astro:page-load", () => {
@@ -117,7 +118,7 @@ const lang = getLangFromUrl(Astro.url);
         });
       }
     });
-</script>
+  </script>
 </html>
 <style is:global>
   :root {

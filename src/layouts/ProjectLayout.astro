@@ -4,7 +4,7 @@ import { ClientRouter } from "astro:transitions";
 export interface Props {
   title: string;
 }
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 ---
@@ -44,8 +44,6 @@ const lang = getLangFromUrl(Astro.url);
     <slot />
     <ClientRouter />
   </body>
-  <script type="module" src="/pixel-canvas.js"></script>
-  <script type="module" src="/pixel-canvas-original.js"></script>
 </html>
 <style is:global>
   :root {
