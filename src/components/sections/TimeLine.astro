@@ -214,7 +214,10 @@ const timelineData = currentLocale === "es" ? timelineDataES : timelineDataEN;
             const dots = document.querySelectorAll(".timeline-line + div > .relative .absolute");
             const lines = document.querySelectorAll(".timeline-line");
             const windowHeight = window.innerHeight;
-            const timelineTop = document.getElementById("timeline").getBoundingClientRect().top;
+            const getTimelineTop = document.getElementById("timeline")
+
+            if(getTimelineTop === null) return;
+            const timelineTop = getTimelineTop.getBoundingClientRect().top;
     
             if (timelineTop < windowHeight - 100 && !isAnimating) {
                 isAnimating = true;
