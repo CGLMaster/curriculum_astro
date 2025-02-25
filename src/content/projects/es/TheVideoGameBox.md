@@ -39,7 +39,7 @@ La metodología ágil nos permitió adaptarnos rápidamente a cambios y entregar
 Para entender mejor su funcionamiento, hemos dejado una **demo en video** donde podrás ver las funcionalidades clave de la aplicación, desde la búsqueda de juegos hasta la organización y visualización de la colección.
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=tBSbQB7yhEQ">
+  <a href="https://www.youtube.com/watch?v=tBSbQB7yhEQ" target='_blank' rel='noopener noreferrer'>
     <img src="https://img.youtube.com/vi/tBSbQB7yhEQ/0.jpg" alt="Video Demo">
   </a>
 </p>

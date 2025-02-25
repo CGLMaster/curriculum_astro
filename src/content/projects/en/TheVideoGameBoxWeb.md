@@ -43,7 +43,7 @@ Although the application is **in development**, it currently allows users to vie
 In the project's demonstration, you can see the game search process, the user interface, and how the information is clearly organized. If you wish to see how the application works, click on the following video to view the complete **demo**:
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=7s0T1A_z7iM">
+  <a href="https://www.youtube.com/watch?v=7s0T1A_z7iM" target='_blank' rel='noopener noreferrer'>
     <img src="https://img.youtube.com/vi/7s0T1A_z7iM/0.jpg" alt="Video Demo">
   </a>
 </p>

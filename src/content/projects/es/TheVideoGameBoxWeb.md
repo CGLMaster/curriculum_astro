@@ -43,7 +43,7 @@ Aunque la aplicación está **en desarrollo**, actualmente permite visualizar lo
 En la demostración del proyecto, se puede ver el proceso de búsqueda de juegos, la interfaz de usuario y cómo la información se organiza de forma clara. Si deseas ver el funcionamiento de la aplicación, puedes hacer clic en el siguiente video para ver la **demo** completa:
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=7s0T1A_z7iM">
+  <a href="https://www.youtube.com/watch?v=7s0T1A_z7iM" target='_blank' rel='noopener noreferrer'>
     <img src="https://img.youtube.com/vi/7s0T1A_z7iM/0.jpg" alt="Video Demo">
   </a>
 </p>

@@ -5,10 +5,14 @@ import Navitem from "../shared/Navitem.astro";
 import Button from "../shared/Button.astro";
 import LanguageSelector from "./LanguageSelector.astro";
 import { getI18n } from "../../i18n";
-import { getLangFromUrl, useTranslations, useTranslatedPath, } from '../../i18n/utils';
+import {
+    getLangFromUrl,
+    useTranslations,
+    useTranslatedPath,
+} from "../../i18n/utils";
 
-const { currentLocale } = Astro
-const i18n = getI18n({ currentLocale })
+const { currentLocale } = Astro;
+const i18n = getI18n({ currentLocale });
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -82,17 +86,26 @@ const navItems = [
                 <div
                     class="lg:min-w-max flex items-center sm:w-max w-full pb-6 lg:pb-0 border-b border-box-bg lg:border-0 px-6 lg:px-0"
                 >
-                    <Button
-                        variant={"primary"}
-                        className={"min-w-max text-white"}
+                    <a
+                        href="/pdf/CV CarlosGomezLopez.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        <span
-                            class="flex flex-row relative z-[5] justify-center items-center"
+                        <Button
+                            variant={"primary"}
+                            className={"min-w-max text-white"}
                         >
-                            <iconify-icon icon="mdi:file-pdf" class="text-2xl"
-                            ></iconify-icon> &nbsp;&nbsp;{i18n.nav.curriculum}
-                        </span>
-                    </Button>
+                            <span
+                                class="flex flex-row relative z-[5] justify-center items-center"
+                            >
+                                <iconify-icon
+                                    icon="mdi:file-pdf"
+                                    class="text-2xl"></iconify-icon> &nbsp;&nbsp;{
+                                    i18n.nav.curriculum
+                                }
+                            </span>
+                        </Button>
+                    </a>
                 </div>
             </div>
 
@@ -192,27 +205,27 @@ const navItems = [
         let lastScroll = 0;
         const header = document.querySelector("header");
         let scrollTimeout;
-    
+
         window.addEventListener("scroll", () => {
             const currentScroll = window.pageYOffset;
             const windowWidth = window.innerWidth;
-    
+
             if (windowWidth < 1025) {
                 return;
             }
-    
+
             if (currentScroll > 100) {
                 header.classList.add("scrolled");
             } else {
                 header.classList.remove("scrolled");
             }
-    
+
             if (currentScroll < 0) {
                 header.classList.add("diminishing");
             } else {
                 header.classList.remove("diminishing");
             }
-    
+
             if (currentScroll > lastScroll && currentScroll > 100) {
                 header.style.transform = "translateY(-100%)";
             } else {
@@ -224,7 +237,7 @@ const navItems = [
                     }
                 }, 4000);
             }
-    
+
             lastScroll = currentScroll;
         });
     });

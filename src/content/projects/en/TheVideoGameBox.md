@@ -39,7 +39,7 @@ The agile methodology allowed us to quickly adapt to changes and continuously de
 To better understand its functionality, we have provided a **video demo** where you can see the key features of the application, from game search to the organization and visualization of the collection.
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=tBSbQB7yhEQ">
+  <a href="https://www.youtube.com/watch?v=tBSbQB7yhEQ" target='_blank' rel='noopener noreferrer'>
     <img src="https://img.youtube.com/vi/tBSbQB7yhEQ/0.jpg" alt="Video Demo">
   </a>
 </p>

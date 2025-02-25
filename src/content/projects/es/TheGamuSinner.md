@@ -23,7 +23,7 @@ Este proyecto ha sido desarrollado utilizando:
 
 ## 🔗 Link al juego  
 <p align="center">
-  <a href="https://pabluskagamo.github.io/The-GamuSinner/" target="_blank">
+  <a href="https://pabluskagamo.github.io/The-GamuSinner/" target='_blank' rel='noopener noreferrer'>
     <strong>🎮 Jugar a The GamuSinner</strong>
   </a>
 </p>

@@ -24,7 +24,7 @@ This project has been developed using:
 
 ## 🔗 Game Link  
 <p align="center">
-  <a href="https://pabluskagamo.github.io/The-GamuSinner/" target="_blank">
+  <a href="https://pabluskagamo.github.io/The-GamuSinner/" target='_blank' rel='noopener noreferrer'>
     <strong>🎮 Play The GamuSinner</strong>
   </a>
 </p>
