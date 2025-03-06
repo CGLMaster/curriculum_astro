@@ -3,7 +3,7 @@
         "title": "Portfolio Carlos",
         "home": "Home",
         "about": "About Me",
-        "trayectory": "My Trayerctory",
+        "trayectory": "Professional Background",
         "skills": "Skills",
         "projects": "Projects",
         "curriculum": "Curriculum",
@@ -39,7 +39,7 @@
         }
     },
     "trayectory":{
-        "title": "My Trayectory",
+        "title": "Professional Background",
         "actuality": "Actuality"
     },
     "projects": {
