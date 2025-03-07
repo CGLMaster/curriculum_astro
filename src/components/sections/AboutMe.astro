@@ -50,51 +50,40 @@ const i18n = getI18n({currentLocale});
 
         <div class="flex flex-col justify-center gap-[2.1rem] max-w-[75rem] z-10">
             <Title>{i18n.about.title}</Title>
-            <Paragraph>
+            <div class="flex flex-col gap-[1rem]">
+              <Paragraph>
                 {i18n.about.paragraph.first}
-                <br />
+              </Paragraph>
+              <Paragraph>
                 {i18n.about.paragraph.second}
-                <a href="https://www.ucm.es/" class="text-indigo-600 hover:underline font-medium" title="UCM" target="_blank" rel="noopener noreferrer"
-                    >{i18n.about.paragraph.link}</a
-                >.
-                <br />
+                <a href="https://www.ucm.es/" class="text-indigo-600 hover:underline font-medium" title="UCM" target="_blank" rel="noopener noreferrer">
+                  {i18n.about.paragraph.link}
+                </a>.
+              </Paragraph>
+              <Paragraph>
                 {i18n.about.paragraph.third}
-                <br />
+              </Paragraph>
+              <Paragraph>
                 {i18n.about.paragraph.fourth}
-                <br />
+              </Paragraph>
+              <Paragraph>
                 {i18n.about.paragraph.fifth}
-            </Paragraph>
-            <div
-                class="flex w-full md:w-4/12 justify-around items-center mt-5 md:mt-0"
-            >
-                <a href="/pdf/CV CarlosGomezLopez.pdf" class="hover:text-indigo-600" title="Curriculum" target="_blank" rel="noopener noreferrer">
-                    <iconify-icon icon="mdi:file-pdf" class="text-4xl" />
-                </a>
-                <a
-                    href="https://github.com/CGLMaster"
-                    class="hover:text-indigo-600"
-                    title="Github"
-                    target="_blank" rel="noopener noreferrer"
-                >
-                    <iconify-icon icon="mdi:github-box" class="text-4xl" />
-                </a>
-                <a
-                    href="mailto:carlos9gomezl@gmail.com"
-                    class="hover:text-indigo-600"
-                    title="Email"
-                    target="_blank" rel="noopener noreferrer"
-                >
-                    <iconify-icon icon="mdi:gmail" class="text-4xl" />
-                </a>
-                <a
-                    href="https://www.linkedin.com/in/carlos-g%C3%B3mez-l%C3%B3pez-66536027a/"
-                    class="hover:text-indigo-600"
-                    title="Linkedin"
-                    target="_blank" rel="noopener noreferrer"
-                >
-                    <iconify-icon icon="mdi:linkedin" class="text-4xl" />
-                </a>
+              </Paragraph>
             </div>
-        </div>
+            <div class="flex w-full md:w-4/12 justify-around items-center mt-5 md:mt-0">
+              <a href="/pdf/CV CarlosGomezLopez.pdf" class="hover:text-indigo-600" title="Curriculum" target="_blank" rel="noopener noreferrer">
+                <iconify-icon icon="mdi:file-pdf" class="text-4xl" />
+              </a>
+              <a href="https://github.com/CGLMaster" class="hover:text-indigo-600" title="Github" target="_blank" rel="noopener noreferrer">
+                <iconify-icon icon="mdi:github-box" class="text-4xl" />
+              </a>
+              <a href="mailto:carlos9gomezl@gmail.com" class="hover:text-indigo-600" title="Email" target="_blank" rel="noopener noreferrer">
+                <iconify-icon icon="mdi:gmail" class="text-4xl" />
+              </a>
+              <a href="https://www.linkedin.com/in/carlos-g%C3%B3mez-l%C3%B3pez-66536027a/" class="hover:text-indigo-600" title="Linkedin" target="_blank" rel="noopener noreferrer">
+                <iconify-icon icon="mdi:linkedin" class="text-4xl" />
+              </a>
+            </div>
+          </div>
     </Container>
 </section>
