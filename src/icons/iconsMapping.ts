@@ -4,6 +4,16 @@ export const iconsMapping = {
         dark: "skill-icons:react-dark",
         alt: "React-Native",
     },
+    "Spotify API":{
+        light: "logos:spotify-icon",
+        dark: "logos:spotify-icon",
+        alt: "Spotify API",
+    },
+    react: {
+        light: "skill-icons:react-light",
+        dark: "skill-icons:react-dark",
+        alt: "React",
+    },
     node: {
         light: "skill-icons:nodejs-light",
         dark: "skill-icons:nodejs-dark",
@@ -99,4 +109,19 @@ export const iconsMapping = {
         dark: "skill-icons:css",
         alt: "CSS",
     },
+    astro: {
+        light: "skill-icons:astro",
+        dark: "skill-icons:astro",
+        alt: "Astro",
+    },
+    tailwindcss: {
+        light: "skill-icons:tailwindcss-light",
+        dark: "skill-icons:tailwindcss-dark",
+        alt: "TailwindCSS",
+    },
+    ts:{
+        light: "skill-icons:typescript",
+        dark: "skill-icons:typescript",
+        alt: "TypeScript",
+    }
 };

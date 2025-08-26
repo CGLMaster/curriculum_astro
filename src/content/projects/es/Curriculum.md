@@ -6,7 +6,7 @@ tags: ["html", "sass", "js", "code",]
 repoUrl: "https://github.com/SwiftDo-TFG/SwiftDo/tree/main"
 demoUrl: "https://cglmaster.github.io/"
 anim: 'fade-up'
-priority: 4
+priority: 5
 language: 'es'
 ---
 

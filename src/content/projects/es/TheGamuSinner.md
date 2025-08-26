@@ -2,11 +2,11 @@
 title: TheGamuSinner
 description: The GamuSinner es un videojuego de aventuras desarrollado con Phaser, HTML, CSS y JavaScript. Sumérgete en un mundo lleno de criaturas mitológicas y mazmorras desafiantes mientras exploras distintos escenarios de España. Enfréntate a intensas oleadas de enemigos, resuelve acertijos y forja alianzas en esta experiencia frenética y envolvente.
 img: thegamussiner.png
-tags: ["phaser", "html", "css", "js"]
+tags: ["phaser", "html", "css", "js", "code"]
 repoUrl: "https://github.com/Pabluskagamo/The-GamuSinner/tree/main"
 demoUrl: "https://pabluskagamo.github.io/The-GamuSinner/"
 anim: 'fade-up'
-priority: 2
+priority: 3
 language: 'es'
 ---
 ## ⓘ Sobre el proyecto

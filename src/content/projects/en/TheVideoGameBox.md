@@ -6,7 +6,7 @@ tags: ["java", "python", "mongodb", "IGDB", "jira", "eclipse"]
 repoUrl: "https://github.com/CGLMaster/TheVideoGameBox"
 demoUrl: "https://youtu.be/tBSbQB7yhEQ?si=hS4-s1Q_866OvVxw"
 anim: 'fade-up'
-priority: 3
+priority: 4
 language: 'en'
 ---
 
