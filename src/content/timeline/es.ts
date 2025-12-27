@@ -99,24 +99,6 @@ const timeline = [
           "Refactoricé código heredado y optimicé la representación de gráficos en tiempo real para mejorar rendimiento y claridad.",
         ],
       },
-      {
-        title: "Proyecto F - Librería UI",
-        bullets: [
-          "Componentes reutilizables",
-          "Documentación",
-          "TypeScript",
-          "Publicación NPM",
-        ],
-      },
-      {
-        title: "Proyecto G - Integración móvil",
-        bullets: [
-          "React Native Bridge",
-          "Optimización de rendimiento",
-          "Monitoreo de errores",
-          "Soporte multiplataforma",
-        ],
-      },
     ],
   },
 ];

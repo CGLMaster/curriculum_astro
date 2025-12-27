@@ -99,19 +99,6 @@ const timeline = [
           "Refactored legacy code and optimized real-time chart rendering for improved performance and clarity.",
         ],
       },
-      {
-        title: "Project F - UI library",
-        bullets: ["Reusable components", "Docs", "TypeScript", "NPM publish"],
-      },
-      {
-        title: "Project G - Mobile integration",
-        bullets: [
-          "RN bridge",
-          "Performance tuning",
-          "Error monitoring",
-          "Cross-platform support",
-        ],
-      },
     ],
   },
 ];
