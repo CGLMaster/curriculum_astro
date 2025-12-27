@@ -1,0 +1,228 @@
+<div
+  id="projects-modal"
+  class="hidden fixed inset-0 z-50 items-center justify-center"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <div id="modal-overlay" class="absolute inset-0 bg-black/50"></div>
+  <div
+    class="modal-inner relative max-w-3xl w-[95%] bg-box-bg rounded-lg shadow-2xl p-4 z-10 transform transition-transform duration-300 scale-95 opacity-0"
+  >
+    <div class="flex items-start justify-between px-4 pt-3">
+      <h3 id="modal-title" class="text-xl font-semibold"></h3>
+      <button
+        id="modal-close"
+        class="ml-4 text-gray-500 hover:text-gray-900 p-1 rounded-full"
+        aria-label="Close modal"
+      >
+        <iconify-icon icon="mdi:close" width="22" height="22"></iconify-icon>
+      </button>
+    </div>
+    <div
+      id="modal-content"
+      class="mt-4 grid gap-4 grid-cols-1 max-h-[60vh] overflow-auto p-4"
+    >
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  #projects-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  #projects-modal.show {
+    display: flex;
+  }
+
+  .modal-inner {
+    transition:
+      transform 320ms cubic-bezier(0.2, 0.9, 0.2, 1),
+      opacity 220ms ease;
+    max-width: 56rem;
+    padding: 1.25rem;
+  }
+  #projects-modal.show .modal-inner {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  #modal-overlay {
+    opacity: 0;
+    transition: opacity 240ms ease;
+    background: rgba(2, 6, 23, 0.65);
+  }
+  #projects-modal.show #modal-overlay {
+    opacity: 1;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-foreground);
+    background: rgb(var(--heading-1) / 0.75);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-background);
+    background: transparent;
+  }
+
+  .project-card {
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 10px 28px rgba(2, 6, 23, 0.12);
+    transform: translateY(10px) scale(0.98);
+    opacity: 0;
+    transition:
+      transform 360ms cubic-bezier(0.2, 0.9, 0.2, 1),
+      opacity 360ms ease,
+      box-shadow 160ms ease;
+    background-color: rgb(var(--project-card-a, 247 250 255));
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(0, 0, 0, 0)
+    );
+    border: 1px solid rgba(var(--box-border, 229 231 235), 0.12);
+    color: rgb(var(--heading-2, 31 41 55));
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.16);
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease;
+    cursor: pointer;
+  }
+  .project-card:active {
+    transform: translateY(0) scale(0.995);
+  }
+  .project-card:focus {
+    outline: 2px solid rgba(var(--heading-1, 31 41 55) / 0.12);
+    outline-offset: 4px;
+  }
+
+  .project-card + .project-card {
+    margin-top: 12px;
+  }
+
+  .project-card h4 {
+    color: rgb(var(--heading-1));
+  }
+  .project-card h4 {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .project-summary {
+    color: rgb(var(--heading-3));
+    font-size: 1.08rem;
+    font-weight: 600;
+    margin-top: 6px;
+    margin-bottom: 10px;
+  }
+  .project-card ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .project-card ul li {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    margin-bottom: 6px;
+  }
+  .project-card li strong {
+    font-weight: 700;
+    color: rgb(var(--heading-1));
+    background: rgba(79, 70, 229, 0.08);
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+  .project-card ul li::marker {
+    color: rgba(79, 70, 229, 0.9);
+    font-size: 0.9rem;
+  }
+
+  #modal-close {
+    background: rgb(var(--project-card-b, 250 251 253));
+    border-radius: 9999px;
+    padding: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(2, 6, 23, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.04);
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease;
+  }
+  #modal-close:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12);
+  }
+  #modal-close iconify-icon {
+    color: rgb(var(--heading-1, 250 251 253));
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const modal = document.getElementById("projects-modal");
+    const overlay = document.getElementById("modal-overlay");
+    const closeBtn = document.getElementById("modal-close");
+    const titleEl = document.getElementById("modal-title");
+    const contentEl = document.getElementById("modal-content");
+
+    function open(detail: any) {
+      if (!modal || !contentEl) return;
+      if (titleEl) titleEl.textContent = detail.title || "";
+
+      contentEl.innerHTML = detail.html || "";
+
+      const items = Array.from(contentEl.querySelectorAll(".project-item"));
+      items.forEach((it, i) => {
+        const el = it as HTMLElement;
+        el.classList.add("project-card");
+        el.style.transitionDelay = `${i * 80}ms`;
+        requestAnimationFrame(() => el.classList.add("show"));
+      });
+
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+      if (!modal) return;
+      if (!contentEl) return;
+      const items = Array.from(contentEl.querySelectorAll(".project-card"));
+      items.forEach((it) => it.classList.remove("show"));
+      modal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    window.addEventListener("open-projects-modal", (ev) => {
+      const detail = (ev as CustomEvent).detail || {};
+      open(detail);
+    });
+
+    if (overlay) overlay.addEventListener("click", close);
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  });
+</script>

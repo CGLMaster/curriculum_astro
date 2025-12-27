@@ -81,11 +81,11 @@ const lang = getLangFromUrl(Astro.url);
         }, 500);
       });
       const toggleMenu = document.querySelector(
-        "[data-toggle-nav]",
+        "[data-toggle-nav]"
       ) as HTMLButtonElement;
       const navbar = document.querySelector("[data-navbar]") as HTMLDivElement;
       const overlayNav = document.querySelector(
-        "[data-nav-overlay]",
+        "[data-nav-overlay]"
       ) as HTMLDivElement;
       if (toggleMenu) {
         toggleMenu.addEventListener("click", (e) => {
@@ -136,6 +136,8 @@ const lang = getLangFromUrl(Astro.url);
     --heading-3: 55 65 81;
     --button: 239, 239, 239;
     --button-hover: 207, 207, 207;
+    --project-card-a: 243 246 252;
+    --project-card-b: 236 240 247;
   }
 
   .dark {
@@ -151,6 +153,8 @@ const lang = getLangFromUrl(Astro.url);
     --heading-3: 209 213 219;
     --button: 31, 37, 50;
     --button-hover: 47, 53, 66;
+    --project-card-a: 43 59 79;
+    --project-card-b: 43 59 79;
   }
 
   html {
