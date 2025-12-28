@@ -74,7 +74,7 @@ const timeline = [
     color: "#F59E0B",
     projects: [
       {
-        title: "PLATAFORMA DE CHAT CONVERSACIONAL (Repsol)",
+        title: "Plataforma de Chat Conversacional (Repsol)",
         description:
           "Aplicación web para <strong>orquestación multi-agente</strong> (swarm, planners, agents y tools) que orquesta modelos de <strong>IA</strong> en producción. <strong>Interfaz conversacional multimodal</strong> (texto, audio y documentos con transcripción), comunicación en tiempo real vía <strong>SignalR</strong> y consola de administración y memoria reciente por chat.",
         bullets: [
@@ -88,17 +88,56 @@ const timeline = [
         ],
       },
       {
-        title: "APLICACIÓN DE CONECTIVIDAD CON SOLDADORES",
+        title: "Aplicación de Conectividad con Soldadores",
         description:
           "Aplicación híbrida (React Native) para monitorización y control de soldadores mediante BLE, mostrando métricas en tiempo real (temperatura, potencia, batería, estado del dispositivo) y gestionando múltiples conexiones.",
         bullets: [
-          "Lideré el desarrollo completo tras la salida de un compañero, implementando la gestión de múltiples dispositivos y la sincronización de datos en almacenamiento local.",
-          "Mejoré la comunicación BLE: reconexión automática y conexión directa al último dispositivo emparejado.",
+          "Lideré el <strong>desarrollo completo</strong> tras la salida de un compañero, implementando la gestión de múltiples dispositivos y la sincronización de datos en almacenamiento local.",
+          "Mejoré la <strong>comunicación BLE</strong>: reconexión automática y conexión directa al último dispositivo emparejado.",
           "Diseñé la UI con soporte dark/light y soporte de internacionalización (i18n).",
-          "Implementé el proceso de actualización de firmware mediante envío de datos en paquetes desde archivos .hex.b16 al soldador.",
+          "Implementé el <strong>proceso de actualización de firmware</strong> mediante envío de datos en paquetes desde archivos .hex.b16 al soldador.",
           "Refactoricé código heredado y optimicé la representación de gráficos en tiempo real para mejorar rendimiento y claridad.",
         ],
       },
+      {
+        title: "App de Podcasts y Radio",
+        description: "Aplicación móvil para descubrir y reproducir podcasts y emisoras locales mediante geolocalización. Desarrollada con <strong>Vue 3 (Options API)</strong> e <strong>Ionic</strong>, integra reproductor en segundo plano, mapas y autenticación social con <strong>Firebase</strong> (Apple/Google).",
+        bullets: [
+          "Configuración de <strong>Firebase</strong> y logins sociales (Apple y Google) para autenticación sin usuario/contraseña.",
+          "Implementación de reproductor de audio en segundo plano con controles desde notificaciones y lock screen; migración a librería activa por deprecación de la anterior.",
+          "Integración de <strong>mapa</strong> con búsqueda geolocalizada de podcasts; actualización dinámica de marcadores al desplazar el mapa y búsqueda por zona.",
+          "Mejoras de navegación y UX: slidebar, control de 'volver atrás' y manejo consistente del estado de reproducción entre vistas.",
+          "Nuevas secciones: pistas, logros y favoritos; cambio completo de UI a tema oscuro (re-diseño visual del app).",
+          "Refactorización del código heredado: modularización, limpieza y optimizaciones de rendimiento.",
+        ],
+      },
+      {
+        title: "Landing App Fútbol",
+        description: "Landing desarrollada con <strong>Astro</strong> y <strong>Tailwind CSS</strong> para presentar la aplicación de fútbol; foco en performance, SEO y captación de usuarios.",
+        bullets: [
+          "Desarrollo con componentes reutilizables en <strong>Astro</strong> y estilos con <strong>Tailwind</strong>.",
+          "Optimización para SEO y tiempos de carga; integración con formularios de captura y tracking de eventos.",
+          "Implementación de microinteracciones y pruebas A/B para mejorar conversiones.",
+        ],
+      },
+      {
+        title: "Web equipo de Rugby",
+        description: "Web institucional desarrollada en <strong>WordPress</strong> con personalizaciones y módulos a medida para el equipo.",
+        bullets: [
+          "Diseño y desarrollo con <strong>WordPress</strong> y custom post types para jugadores y partidos.",
+          "Integración con feeds de resultados y calendario de eventos.",
+          "Optimización para móviles y soporte básico de multilanguage.",
+        ],
+      },
+      {
+        title: "Mantenimiento App Fútbol",
+        bullets: [
+          "Corrección de errores críticos y optimización de memoria y consumo.",
+          "Gestión de releases y pipelines de CI/CD (tests, build y despliegues).",
+          "Refactorización de módulos para facilitar nuevas integraciones y mejoras.",
+          "Implementación de diseño responsive.",
+        ],
+      }
     ],
   },
 ];

@@ -74,7 +74,7 @@ const timeline = [
     color: "#F59E0B",
     projects: [
       {
-        title: "CONVERSATIONAL CHAT PLATFORM (Repsol)",
+        title: "Conversational Chat Platform (Repsol)",
         description:
           "Web application for <strong>multi-agent orchestration</strong> (swarm, planners, agents and tools) that orchestrates <strong>AI</strong> models in production. <strong>Conversational multimodal interface</strong> (text, audio and documents with transcription), real-time communication via <strong>SignalR</strong> and administration console and recent memory by chat.",
         bullets: [
@@ -88,17 +88,56 @@ const timeline = [
         ],
       },
       {
-        title: "WELDER CONNECTIVITY APP",
+        title: "Welder Connectivity App",
         description:
           "Hybrid app (<strong>React Native</strong>) for monitoring and controlling welders via <strong>BLE</strong>, displaying real-time metrics (temperature, power, battery, device status) and managing multiple connections.",
         bullets: [
-          "Led full development after a teammate left, implementing multi-device management and local data synchronization.",
-          "Improved BLE communication: automatic reconnection and direct connection to the last paired device.",
+          "Led <strong>full development</strong> after a teammate left, implementing multi-device management and local data synchronization.",
+          "Improved <strong>BLE communication</strong>: automatic reconnection and direct connection to the last paired device.",
           "Designed the UI with dark/light mode support and internationalization (i18n).",
-          "Implemented firmware update flow, sending data in packets from .hex.b16 files to the welder.",
+          "Implemented <strong>firmware update flow</strong>, sending data in packets from .hex.b16 files to the welder.",
           "Refactored legacy code and optimized real-time chart rendering for improved performance and clarity.",
         ],
       },
+      {
+        title: "Podcasts & Radio App",
+        description: "Mobile app to discover and stream local podcasts and radio based on geolocation. Built with <strong>Vue 3 (Options API)</strong> and <strong>Ionic</strong>, includes background audio player, maps and social auth via <strong>Firebase</strong> (Apple/Google).",
+        bullets: [
+          "Configured <strong>Firebase</strong> and social logins (Apple & Google) to enable passwordless authentication.",
+          "Implemented a background audio player with notification/lock-screen controls; migrated to an actively maintained audio library after deprecation.",
+          "Integrated a <strong>map</strong> for geolocated podcast discovery; dynamic marker updates and area-based search when moving the map.",
+          "Navigation/UX improvements: slidebar behavior, back navigation and consistent playback state across views.",
+          "Added sections: tracks, achievements and favorites; full visual redesign to a dark theme.",
+          "Refactored inherited codebase: modularization, cleanup and performance optimizations.",
+        ],
+      },
+      {
+        title: "Football App Landing",
+        description: "Landing page built with <strong>Astro</strong> and <strong>Tailwind CSS</strong> to present the football app; focus on performance, SEO and user acquisition.",
+        bullets: [
+          "Built with reusable components in <strong>Astro</strong> and styled with <strong>Tailwind</strong>.",
+          "SEO and load optimizations; integrated capture forms and event tracking.",
+          "Implemented microinteractions and A/B tests to improve conversions.",
+        ],
+      },
+      {
+        title: "Rugby Team Website",
+        description: "Institutional website developed in <strong>WordPress</strong> with customizations and tailored modules for the team.",
+        bullets: [
+          "Built with <strong>WordPress</strong> and custom post types for players and matches.",
+          "Integrated results feeds and events calendar.",
+          "Mobile optimization and basic multilingual support.",
+        ],
+      },
+      {
+        title: "Football App Maintenance",
+        bullets: [
+          "Fixed critical bugs and optimized memory and resource usage.",
+          "Managed releases and CI/CD pipelines (tests, build and deploy).",
+          "Refactored modules to ease new integrations and improvements.",
+          "Responsive design implementations."
+        ],
+      }
     ],
   },
 ];
