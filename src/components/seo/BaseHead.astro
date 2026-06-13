@@ -1,0 +1,135 @@
+---
+import { getI18n } from "../../i18n";
+
+export interface Props {
+  /** Parte específica del título de la página (se compone con el nombre del sitio). */
+  title?: string;
+  /** Meta description. Si no se indica, se usa la descripción por defecto localizada. */
+  description?: string;
+  /** Imagen para Open Graph (ruta absoluta del sitio, p. ej. `/projects/x.png`). */
+  image?: string;
+  /** `og:type` (por defecto `website`; usar `article` en páginas de proyecto). */
+  type?: string;
+  /** JSON-LD adicional específico de la página (además del `Person` del sitio). */
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, image, type = "website", jsonLd } = Astro.props;
+
+const lang = Astro.currentLocale ?? "es";
+const i18n = getI18n({ currentLocale: lang });
+
+const SITE_NAME = "Carlos Gómez López";
+const SITE = Astro.site ?? new URL("https://dev-cgl-portfolio.onrender.com");
+
+const pageTitle = title ? `${title} · ${SITE_NAME}` : i18n.seo.defaultTitle;
+const desc = description ?? i18n.seo.defaultDescription;
+
+const canonical = new URL(Astro.url.pathname, SITE);
+const ogImage = new URL(image ?? "/images/introImage.png", SITE);
+
+// Enlaces hreflang: misma página en cada idioma.
+const pathNoLocale = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const esUrl = new URL(pathNoLocale, SITE);
+const enUrl = new URL("/en" + (pathNoLocale === "/" ? "/" : pathNoLocale), SITE);
+
+const ogLocale = lang === "en" ? "en_US" : "es_ES";
+const ogLocaleAlt = lang === "en" ? "es_ES" : "en_US";
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE_NAME,
+  url: SITE.href,
+  jobTitle: lang === "en" ? "Software Engineer" : "Ingeniero de Software",
+  email: "mailto:carlos9gomezl@gmail.com",
+  sameAs: [
+    "https://github.com/CGLMaster",
+    "https://www.linkedin.com/in/carlos-g%C3%B3mez-l%C3%B3pez-66536027a/",
+  ],
+};
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/images/favicon.png" />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={desc} />
+  <meta name="author" content={SITE_NAME} />
+
+  <link rel="canonical" href={canonical.href} />
+  <link rel="alternate" hreflang="es" href={esUrl.href} />
+  <link rel="alternate" hreflang="en" href={enUrl.href} />
+  <link rel="alternate" hreflang="x-default" href={esUrl.href} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:url" content={canonical.href} />
+  <meta property="og:image" content={ogImage.href} />
+  <meta property="og:locale" content={ogLocale} />
+  <meta property="og:locale:alternate" content={ogLocaleAlt} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={ogImage.href} />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Datos estructurados -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personLd)} />
+  {
+    jsonLd && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )
+  }
+
+  <!-- Web component de iconos (empaquetado, sin CDN externa) -->
+  <script>
+    import "iconify-icon";
+  </script>
+
+  <!-- Tema claro/oscuro: aplica la preferencia guardada en todas las páginas -->
+  <script>
+    if (!window.__themeInit) {
+      window.__themeInit = true;
+      document.addEventListener("astro:page-load", () => {
+        const doc = document.documentElement;
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const stored = localStorage.getItem("appTheme");
+
+        if (stored === "dark" || (stored === null && prefersDark)) {
+          doc.classList.add("dark");
+        } else {
+          doc.classList.remove("dark");
+        }
+
+        const switchTheme = document.querySelector("[data-switch-theme]");
+        if (switchTheme) {
+          switchTheme.addEventListener("click", (e) => {
+            e.preventDefault();
+            const isDark = doc.classList.toggle("dark");
+            localStorage.setItem("appTheme", isDark ? "dark" : "light");
+          });
+        }
+      });
+    }
+  </script>
+</head>

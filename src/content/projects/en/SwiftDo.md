@@ -6,7 +6,7 @@ tags: ["React-Native", "js", "docker", "node", "aws", "alexa", "electron", "code
 repoUrl: "https://github.com/CGLMaster/TheVideoGameBox/tree/main"
 demoUrl: "https://youtu.be/ayiB5wO4Rg0"
 anim: 'fade-right'
-priority: 1
+priority: 2
 language: 'en'
 ---
 

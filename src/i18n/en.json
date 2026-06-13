@@ -18,6 +18,7 @@
         },
         "description": "Specialized in web development, I love creating innovative solutions both in front-end and back-end. Always looking for new challenges that allow me to grow professionally.",
         "download": "Download CV",
+        "viewProjects": "View projects",
         "byNumber": {
             "age": "Age",
             "experience": "Experience (Years)",
@@ -54,5 +55,9 @@
         },
         "paragraph": "If you have an idea, a project or just want to connect, I'll be happy to hear from you.",
         "button": "Contact Me"
+    },
+    "seo": {
+        "defaultTitle": "Carlos Gómez López — Software Engineer | Portfolio",
+        "defaultDescription": "Portfolio of Carlos Gómez López, a Software Engineer specialized in web and mobile development (Vue, React, Astro). Explore my projects, background and how to get in touch."
     }
 }

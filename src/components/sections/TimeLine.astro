@@ -1,7 +1,7 @@
 ---
 import { getI18n } from "../../i18n";
-import timelineES from "../../content/timeline/es";
-import timelineEN from "../../content/timeline/en";
+import timelineES from "../../data/timeline/es";
+import timelineEN from "../../data/timeline/en";
 
 import ProjectModal from "../shared/ProjectModal.astro";
 
@@ -217,9 +217,18 @@ function getDescription(item: any) {
       opacity: 0 !important;
     }
   }
+
+  /* Movimiento reducido: las tarjetas no entran desplazándose desde fuera. */
+  @media (prefers-reduced-motion: reduce) {
+    .from-left,
+    .from-right {
+      transform: none;
+    }
+  }
 </style>
 
 <script
+  is:inline
   type="application/json"
   id="timeline-data"
   set:html={JSON.stringify(timelineData).replace(/</g, "\\u003c")}
@@ -229,66 +238,15 @@ function getDescription(item: any) {
   document.addEventListener("astro:page-load", () => {
     const timelineDataEl = document.getElementById("timeline-data");
     const timelineData = timelineDataEl
-      ? JSON.parse(timelineDataEl.textContent)
+      ? JSON.parse(timelineDataEl.textContent || "[]")
       : [];
 
-    let isAnimating = false;
-    document.addEventListener("scroll", () => {
-      const cards = document.querySelectorAll(".card");
-      const dots = document.querySelectorAll(
-        ".timeline-line + div > .relative .absolute"
-      );
-      const lines = document.querySelectorAll(".timeline-line");
-      const windowHeight = window.innerHeight;
-      const getTimelineTop = document.getElementById("timeline");
+    const timelineEl = document.getElementById("timeline");
+    if (!timelineEl || timelineData.length === 0) return;
 
-      if (getTimelineTop === null) return;
-      const timelineTop = getTimelineTop.getBoundingClientRect().top;
-
-      if (timelineTop < windowHeight - 100 && !isAnimating) {
-        isAnimating = true;
-        let delay = 0;
-        let val = 0;
-
-        function animateTimeline() {
-          const line = lines[0] as HTMLElement | undefined;
-          if (!line) return;
-          timelineData.forEach((item: any, index: any) => {
-            setTimeout(() => {
-              const dot = document.getElementById(
-                `dot-${index}`
-              ) as HTMLElement | null;
-              const card = (cards[index] as HTMLElement) || null;
-
-              val += animateLineToDot(index, val);
-
-              const gradient = getGradient(index);
-              (line as HTMLElement).style.background = gradient;
-
-              (line as HTMLElement).style.height = `${val}%`;
-
-              setTimeout(() => {
-                if (dot) dot.classList.add("dot-visible");
-                if (card) card.classList.add("visible");
-              }, 500);
-            }, delay);
-
-            delay += 2000;
-          });
-          setTimeout(() => {
-            val += animateLineToDot(timelineData.length + 1, val);
-            const gradient = getGradient(timelineData.length + 1);
-            (line as HTMLElement).style.background = gradient;
-
-            (line as HTMLElement).style.height = `${val}%`;
-            const cur = document.getElementById("current");
-            if (cur) (cur as HTMLElement).style.opacity = "1";
-          }, delay);
-        }
-
-        animateTimeline();
-      }
-    });
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     function getGradient(index: any) {
       const colors = timelineData.map((item: any) => item.color);
@@ -296,8 +254,6 @@ function getDescription(item: any) {
         return `linear-gradient(to bottom, ${colors[0]}, ${colors[0]})`;
       } else if (index === 1) {
         return `linear-gradient(to bottom, ${colors[0]}, ${colors[1]})`;
-      } else if (index === 2) {
-        return `linear-gradient(to bottom, ${colors[0]}, ${colors[1]}, ${colors[2]})`;
       } else {
         return `linear-gradient(to bottom, ${colors[0]}, ${colors[1]}, ${colors[2]})`;
       }
@@ -332,5 +288,68 @@ function getDescription(item: any) {
 
       return 102 - val;
     }
+
+    const runAnimation = () => {
+      const cards = document.querySelectorAll(".card");
+      const line = document.querySelector(".timeline-line") as HTMLElement | null;
+      if (!line) return;
+
+      let delay = 0;
+      let val = 0;
+      const step = 750;
+
+      timelineData.forEach((_item: any, index: any) => {
+        setTimeout(() => {
+          const dot = document.getElementById(`dot-${index}`);
+          const card = (cards[index] as HTMLElement) || null;
+
+          val += animateLineToDot(index, val);
+          line.style.background = getGradient(index);
+          line.style.height = `${val}%`;
+
+          setTimeout(() => {
+            if (dot) dot.classList.add("dot-visible");
+            if (card) card.classList.add("visible");
+          }, 250);
+        }, delay);
+        delay += step;
+      });
+
+      setTimeout(() => {
+        val += animateLineToDot(timelineData.length + 1, val);
+        line.style.background = getGradient(timelineData.length + 1);
+        line.style.height = `${val}%`;
+        const cur = document.getElementById("current");
+        if (cur) cur.style.opacity = "1";
+      }, delay);
+    };
+
+    if (reduceMotion) {
+      // Estado final inmediato, sin animación.
+      const line = document.querySelector(".timeline-line") as HTMLElement | null;
+      if (line) line.style.height = "100%";
+      document
+        .querySelectorAll(".dot")
+        .forEach((d) => d.classList.add("dot-visible"));
+      document
+        .querySelectorAll(".card")
+        .forEach((c) => c.classList.add("visible"));
+      const cur = document.getElementById("current");
+      if (cur) (cur as HTMLElement).style.opacity = "1";
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            io.disconnect();
+            runAnimation();
+          }
+        }
+      },
+      { rootMargin: "0px 0px -100px 0px" }
+    );
+    io.observe(timelineEl);
   });
 </script>

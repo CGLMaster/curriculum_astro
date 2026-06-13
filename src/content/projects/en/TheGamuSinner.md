@@ -6,7 +6,7 @@ tags: ["phaser", "html", "css", "js", "code"]
 repoUrl: "https://github.com/Pabluskagamo/The-GamuSinner/tree/main"
 demoUrl: "https://pabluskagamo.github.io/The-GamuSinner/"
 anim: 'fade-up'
-priority: 3
+priority: 4
 language: 'en'
 ---
 

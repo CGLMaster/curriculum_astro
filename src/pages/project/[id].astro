@@ -5,10 +5,10 @@ import ProjectLayout from "../../layouts/ProjectLayout.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  const spanishProjects = projects.filter(project =>
-    project.slug.startsWith("es/")
+  const spanishProjects = projects.filter((project) =>
+    project.slug.startsWith("es/"),
   );
-  return spanishProjects.map(project => {
+  return spanishProjects.map((project) => {
     const id = project.slug.replace(/^(es|en)\//, "");
     return {
       params: { id },
@@ -18,8 +18,27 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const { title, description, img, demoUrl } = project.data;
+
+const SITE = Astro.site ?? new URL("https://dev-cgl-portfolio.onrender.com");
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: title,
+  description,
+  applicationCategory: "WebApplication",
+  operatingSystem: "Web",
+  image: new URL(`/projects/${img}`, SITE).href,
+  author: { "@type": "Person", name: "Carlos Gómez López" },
+  ...(demoUrl ? { url: demoUrl } : {}),
+};
 ---
 
-<ProjectLayout title="Portfolio Carlos">
+<ProjectLayout
+  title={title}
+  description={description}
+  image={`/projects/${img}`}
+  jsonLd={jsonLd}
+>
   <App project={project} />
 </ProjectLayout>

@@ -6,13 +6,11 @@ tags: ["astro", "react", "tailwindcss", "ts", "Spotify API", "code"]
 repoUrl: "https://github.com/CGLMaster/Riffster"
 demoUrl: "https://youtu.be/2kbbo3K7GUk"
 anim: 'fade-up'
-priority: 2
+priority: 3
 language: 'es'
 ---
 
-# 🎵 Riffster
-
-<img src="/projects/riffster_logo.png" alt="Riffster Logo" width="50%" style="display: block; margin: auto; max-width: 400px;">
+<img src="/projects/riffster_logo.png" alt="Riffster Logo" width="42%" style="display: block; margin: 0 auto 1.5rem; max-width: 340px;">
 
 Riffster es una aplicación web de música construida sobre la [API de Spotify para Desarrolladores](https://developer.spotify.com/documentation/web-api), que permite a los usuarios disfrutar de su música favorita con una interfaz moderna y fluida.
 

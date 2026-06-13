@@ -1,15 +1,15 @@
 import { defineConfig } from "astro/config";
-import astroI18next from "astro-i18next";
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
-import icon from 'astro-icon';
-
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), astroI18next()],
+  site: "https://dev-cgl-portfolio.onrender.com",
+  integrations: [tailwind(), sitemap()],
   i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
-    routing: {prefixDefaultLocale: false},
-    fallback: { en: 'es' },
+    locales: ["es", "en"],
+    defaultLocale: "es",
+    routing: { prefixDefaultLocale: false },
+    fallback: { en: "es" },
   },
 });

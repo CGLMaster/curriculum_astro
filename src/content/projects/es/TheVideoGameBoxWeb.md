@@ -7,7 +7,7 @@ repoUrl: "https://github.com/CGLMaster/PaginaWeb_Videojuegos"
 demoUrl: "https://youtu.be/7s0T1A_z7iM?si=dsFFAJ87Ra3KUPpA"
 inDevelopment: true
 anim: 'fade-up'
-priority: 6
+priority: 8
 language: 'es'
 ---
 

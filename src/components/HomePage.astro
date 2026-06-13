@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Intro from "./sections/Intro.astro";
+import AboutMe from "./sections/AboutMe.astro";
+import TimeLine from "./sections/TimeLine.astro";
+import CTA from "./sections/CTA.astro";
+import Projects from "./sections/Projects.astro";
+import OutstandingProjects from "./sections/OutstandingProjects.astro";
+---
+
+<Layout>
+  <main class="flex flex-col gap-y-20 overflow-hidden md:gap-y-32">
+    <Intro />
+    <AboutMe />
+    <TimeLine />
+    <OutstandingProjects />
+    <Projects />
+    <CTA />
+  </main>
+</Layout>

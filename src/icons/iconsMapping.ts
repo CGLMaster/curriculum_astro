@@ -1,4 +1,7 @@
-export const iconsMapping = {
+export const iconsMapping: Record<
+    string,
+    { light: string; dark: string; alt: string }
+> = {
     "React-Native": {
         light: "skill-icons:react-light",
         dark: "skill-icons:react-dark",
@@ -123,5 +126,72 @@ export const iconsMapping = {
         light: "skill-icons:typescript",
         dark: "skill-icons:typescript",
         alt: "TypeScript",
-    }
+    },
+    vue: {
+        light: "skill-icons:vuejs-light",
+        dark: "skill-icons:vuejs-dark",
+        alt: "Vue.js",
+    },
+    ionic: {
+        light: "logos:ionic-icon",
+        dark: "logos:ionic-icon",
+        alt: "Ionic",
+    },
+    capacitor: {
+        light: "logos:capacitorjs-icon",
+        dark: "logos:capacitorjs-icon",
+        alt: "Capacitor",
+    },
+    nestjs: {
+        light: "skill-icons:nestjs-light",
+        dark: "skill-icons:nestjs-dark",
+        alt: "NestJS",
+    },
+    prisma: {
+        light: "skill-icons:prisma",
+        dark: "skill-icons:prisma",
+        alt: "Prisma",
+    },
+    postgresql: {
+        light: "skill-icons:postgresql-light",
+        dark: "skill-icons:postgresql-dark",
+        alt: "PostgreSQL",
+    },
+    firebase: {
+        light: "logos:firebase-icon",
+        dark: "logos:firebase-icon",
+        alt: "Firebase",
+    },
+    preact: {
+        light: "logos:preact",
+        dark: "logos:preact",
+        alt: "Preact",
+    },
+    fastify: {
+        light: "simple-icons:fastify",
+        dark: "simple-icons:fastify",
+        alt: "Fastify",
+    },
+    vercel: {
+        light: "skill-icons:vercel-light",
+        dark: "skill-icons:vercel-dark",
+        alt: "Vercel",
+    },
 };
+
+/** Icono de tecnología ya resuelto: imagen (logo en /public) o iconify (claro/oscuro). */
+export type SkillIcon =
+    | { type: "image"; src: string; alt: string }
+    | { type: "icon"; light: string; dark: string; alt: string };
+
+/** Convierte una lista de tags en iconos listos para renderizar. */
+export function resolveSkills(tags: string[] = []): SkillIcon[] {
+    return tags.map((tag) => {
+        if (tag.toLowerCase() === "phaser") {
+            return { type: "image", src: "/logos/phaser.png", alt: "Phaser" };
+        }
+        const found = iconsMapping[tag];
+        if (found) return { type: "icon", ...found };
+        return { type: "icon", light: tag, dark: tag, alt: tag };
+    });
+}

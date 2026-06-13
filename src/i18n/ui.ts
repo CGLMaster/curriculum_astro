@@ -13,22 +13,3 @@ export const languages: Record<
 		flag: 'emojione-v1:flag-for-spain',
 	},
 };
-
-export const defaultLang = 'es';
-export const showDefaultLang = false;
-
-export const ui = {
-    es: {
-    },
-    en: {
-    },
-} as const;
-
-export const routes = {
-	es: {
-
-	},
-	en: {
-
-	},
-}; 

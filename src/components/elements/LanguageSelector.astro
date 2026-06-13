@@ -1,55 +1,81 @@
 ---
 import ChevronIcon from "../icons/Chevron.astro";
 import { languages } from "../../i18n/ui";
-import {
-    getRouteFromUrl,
-    useTranslatedPath,
-    getLangFromUrl,
-} from "../../i18n/utils";
 
-const route = getRouteFromUrl(Astro.url);
-const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
+const lang = Astro.currentLocale ?? "es";
 
-const currentLocaleData = languages[lang];
-const otherLocales = Object.values(languages).filter(
-    (locale) => locale.code !== lang,
-);
+// Ruta actual sin el prefijo de idioma, para conservar la página al cambiar de idioma.
+const pathNoLocale = Astro.url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+const localizedPath = (code: string) =>
+  code === "es"
+    ? pathNoLocale
+    : "/en" + (pathNoLocale === "/" ? "/" : pathNoLocale);
+
+const current = languages[lang] ?? languages.es;
+const others = Object.values(languages).filter((l) => l.code !== lang);
 ---
 
-<div class="relative inline-block text-left">
-    <div
-        class="group text-heading-1 rounded-md text-xs font-semibold hover:bg-box-bg transition-all"
-    >
-        <button
-            type="button"
-            class="inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-            aria-expanded="true"
-            aria-haspopup="true"
-        >
-            <iconify-icon icon={currentLocaleData.flag} class="text-2xl" />
-            <span class="hidden sm:inline">{currentLocaleData.name}</span>
-            <ChevronIcon className="hidden sm:inline"/>
-        </button>
-        <ul
-            class="group-hover:block group-hover:animate-fade-down group-hover:animate-duration-200 hidden pt-0.5 absolute w-full"
-        >
-            {
-                otherLocales.map((locale) => (
-                    <li class="py-[2px]">
-                        <a
-                            class="rounded-md bg-box-bg hover:bg-box-bg/70 whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-                            href={translatePath(
-                                `/${route ? route : ""}`,
-                                locale.code,
-                            )}
-                        >
-                            <iconify-icon icon={locale.flag} class="text-2xl" />
-                            <span class="hidden sm:inline">{locale.name}</span>
-                        </a>
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+<div class="relative inline-block text-left" data-lang-selector>
+  <button
+    type="button"
+    data-lang-toggle
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="inline-flex w-full items-center justify-start gap-x-2 rounded-md px-3 py-2 text-xs font-semibold text-heading-1 transition-all hover:bg-box-bg"
+  >
+    <iconify-icon icon={current.flag} class="text-2xl" />
+    <span class="hidden sm:inline">{current.name}</span>
+    <ChevronIcon className="hidden sm:inline" />
+  </button>
+
+  <ul data-lang-menu class="absolute hidden w-full pt-0.5">
+    {
+      others.map((locale) => (
+        <li class="py-[2px]">
+          <a
+            class="inline-flex w-full items-center justify-start gap-x-2 whitespace-nowrap rounded-md bg-box-bg px-3 py-2 hover:bg-box-bg/70"
+            href={localizedPath(locale.code)}
+          >
+            <iconify-icon icon={locale.flag} class="text-2xl" />
+            <span class="hidden sm:inline">{locale.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const selector = document.querySelector("[data-lang-selector]");
+    const toggle = selector?.querySelector(
+      "[data-lang-toggle]",
+    ) as HTMLButtonElement | null;
+    const menu = selector?.querySelector(
+      "[data-lang-menu]",
+    ) as HTMLElement | null;
+    if (toggle && menu) {
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const willOpen = menu.classList.contains("hidden");
+        menu.classList.toggle("hidden", !willOpen);
+        toggle.setAttribute("aria-expanded", String(willOpen));
+      });
+    }
+
+    // Cierre al hacer clic fuera (una sola vez para todo el documento).
+    if (!window.__langInit) {
+      window.__langInit = true;
+      document.addEventListener("click", (e) => {
+        document.querySelectorAll("[data-lang-selector]").forEach((sel) => {
+          if (!sel.contains(e.target as Node)) {
+            sel.querySelector("[data-lang-menu]")?.classList.add("hidden");
+            sel
+              .querySelector("[data-lang-toggle]")
+              ?.setAttribute("aria-expanded", "false");
+          }
+        });
+      });
+    }
+  });
+</script>
