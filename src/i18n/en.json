@@ -32,11 +32,12 @@
         "title": "About Me",
         "paragraph": {
             "first": "Hello, I'm Carlos Gómez López.",
-            "second": "Graduate in Software Engineering from the ",
+            "second": "I hold a Software Engineering degree from the ",
             "link": "Complutense University of Madrid (UCM)",
-            "third": "I started to be interested in computer science since I was young and thanks to what the career has taught me, it has generated that I have more interest and desire to learn new knowledge and specialize in others. In my last years I have specialized in front, although simply as entertainment, since I do well both in front-end and back-end.",
-            "fourth": "In addition, throughout the career I have been able to learn knowledge regarding cybersecurity, graph analysis, use of efficient algorithms, integration of conversational agents, etc.",
-            "fifth": "In my free time I like to acquire new knowledge for my own benefit, go out with friends and do sports."
+            "secondAfter": " and currently work as a software developer specializing in web and mobile applications.",
+            "third": "Throughout my career, I have contributed to projects using technologies such as React, React Native, Vue, Ionic, and .NET, building solutions focused on user experience, Bluetooth Low Energy (BLE) connectivity, and AI-powered conversational systems.",
+            "fourth": "I consider myself a proactive and adaptable professional who enjoys solving complex problems and continuously expanding both technical and professional skills.",
+            "fifth": "In my free time, I enjoy exploring new technologies, practicing sports, and spending time with friends."
         }
     },
     "trayectory":{

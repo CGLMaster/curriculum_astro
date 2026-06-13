@@ -32,11 +32,12 @@
         "title": "Sobre mí",
         "paragraph": {
             "first": "Buenas, soy Carlos Gómez López.",
-            "second": "Graduado en Ingeniería de Software por la ",
+            "second": "Graduado en Ingeniería del Software por la ",
             "link": "Universidad Complutense de Madrid (UCM)",
-            "third": "Empecé a interesarme en la informática desde joven y gracias a lo que me ha enseñado la carrera ha generado que tenga más interés y ganas de aprender nuevos conocimientos y especializarme en otros. En mis últimos años me he especializado en front, aunque simplemente como entretenimiento, ya que me desenvuelvo bien tanto en front-end como en back-end.",
-            "fourth": "Además, a lo largo de la carrera he podido aprender conocimientos con respecto a la ciberseguridad, análisis de grafos, empleo de algoritmos eficientes, integración de agentes conversacionales, etc.",
-            "fifth": "En mi tiempo libre me gusta adquirir conocimientos nuevos para beneficio propio, salir con los amigos y realizar deporte."
+            "secondAfter": ", actualmente trabajo como desarrollador de software especializado en aplicaciones web y móviles.",
+            "third": "Durante mi trayectoria he participado en proyectos utilizando tecnologías como React, React Native, Vue, Ionic y .NET, desarrollando soluciones centradas en la experiencia de usuario, la conectividad con dispositivos mediante Bluetooth Low Energy (BLE) y la integración de sistemas conversacionales basados en inteligencia artificial.",
+            "fourth": "Me considero una persona resolutiva, con facilidad para adaptarme a nuevos retos y con interés constante por aprender y mejorar tanto mis habilidades técnicas como profesionales.",
+            "fifth": "En mi tiempo libre me gusta seguir explorando nuevas tecnologías, practicar deporte y disfrutar de tiempo con amigos."
         }
     },
     "trayectory":{
