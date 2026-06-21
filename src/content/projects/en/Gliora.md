@@ -3,6 +3,7 @@ title: Gliora
 description: 'A portal of free tools (finance, investing, productivity and more) with ~3,550 generated pages, optimized for organic SEO. Built with Astro SSG on top of a custom Knowledge Graph.'
 img: gliora.png
 tags: ["astro", "ts", "sass"]
+demoUrl: "https://gliora.net"
 inDevelopment: true
 anim: 'fade-up'
 priority: 6
@@ -32,4 +33,4 @@ End-to-end design and development: site architecture, the Knowledge Graph engine
 
 ## 🚧 Status
 
-In active development, not published yet.
+In active development and already live at [gliora.net](https://gliora.net).
