@@ -6,7 +6,7 @@ tags: ["astro", "preact", "ts", "tailwindcss", "mongodb", "IGDB", "vercel", "cod
 repoUrl: "https://github.com/CGLMaster/PaginaWeb_Videojuegos"
 demoUrl: "https://pagina-web-videojuegos.vercel.app"
 anim: 'fade-up'
-priority: 8
+priority: 7
 language: 'es'
 ---
 
